@@ -544,7 +544,6 @@ const post = new Swiper('.post__slider', {
         }
     }
 });
-
 const popular = new Swiper('.popular', {
     slidesPerView: 3.6,
     spaceBetween: 3.2,
@@ -631,8 +630,7 @@ const review = new Swiper(".review", {
         }
     }
 });
-
-let program = new Swiper('.program__swiper', {
+const program = new Swiper('.program__swiper', {
     slidesPerView: 1,
     centeredSlides: true,
     loop: true,
@@ -671,13 +669,12 @@ const openMenu = () => {
 };
 
 //recommend text
-
 const dublicateText = () => {
     let block = $('.recommend__block').clone();
     $('.modal__content').append(block);
 };
 
-// different style for mobile
+// style for mobile
 const changeToMobile = () => {
     if (window.innerWidth <= 666) {
         $('.detail__img img').each(function () {
@@ -865,6 +862,8 @@ function resetForm() {
     $('.modal__reg').hide();
     $('.modal__forget').hide();
     $('.modal__enter').show();
+    $('.modal__newpassword-create').show();
+    $('.modal__newpassword-success').hide();
 }
 
 function changeContent(btn, content) {
@@ -878,6 +877,31 @@ function showPassword() {
     $('.modal__form-eye').click(function (e) {
         $(this).toggleClass('active');
         $(this).hasClass('active') ? $(this).closest('.modal__form-password').find('input').attr('type', 'text') : $(this).closest('.modal__form-password').find('input').attr('type', 'password');
+    });
+}
+
+function profileInfo() {
+    let arrProfile = [];
+    $('.info__edit').click(function () {
+        $(this).hide();
+        $('.info__form input').each(function () {
+            arrProfile.push($(this).val());
+            $(this).prop('disabled', false);
+        });
+
+        console.log('arrProfile', arrProfile);
+        $('.info__form-button').css('display', 'flex');
+    });
+    $('.z').click(function () {
+        $(this).closest('.info__form-button').hide();
+        $(this).closest('.info__form').find('.info__edit').show();
+
+        $('.info__form input').each(function (i) {
+            $(this).prop('disabled', true);
+            $(this).val(arrProfile[i]);
+        });
+
+        console.log('arrProfile', arrProfile);
     });
 }
 
@@ -965,6 +989,7 @@ $(document).ready(function () {
     quize();
     showPassword();
     dublicateText();
+    profileInfo();
 });
 
 $(window).load(function (e) {
@@ -1003,12 +1028,40 @@ $(window).load(function (e) {
         window.location.href = "http://localhost:3333/profile-care.html";
     });
 
+    // modal__newpassword-create
+    let formNewPassword = $('.modal__form-newpassword');
+    validateForm(formNewPassword, function () {
+        sendForm(formNewPassword, 'google.com');
+        $('.modal__newpassword-create').hide();
+        $('.modal__newpassword-success').show();
+    });
+
+    //modal__newpassword-success
+    let formNewPasswordSucc = $('.modal__form-newpassword-success');
+    validateForm(formNewPasswordSucc, function () {
+        sendForm(formNewPasswordSucc, 'google.com');
+        $('.modal').hide();
+    });
+
+    //test result form
+    let formInfoProfile = $('.info__form');
+    validateForm(formInfoProfile, function () {
+        sendForm(formInfoProfile, 'google.com');
+        console.log($(this));
+        $('.info__form-button').hide();
+        $('.info__edit').show();
+        $('.info__form input').each(function (i) {
+            $(this).prop('disabled', true);
+        });
+    });
+
     $('.header__burger').on('click', openMenu);
     quize();
     changeContent($('.modal__enter-reg'), $('.modal__reg'));
     changeContent($('.modal__reg-enter'), $('.modal__enter'));
     changeContent($('.modal__enter-forget'), $('.modal__forget'));
     toogleModal($('.header__auth'), $('.modal__auth'));
+    toogleModal($('.info__change-password'), $('.modal__newpassword'));
     toogleModal($('.recommend__text span'), $('.modal__recommend'));
     changeContent($('.modal__present-want'), $('.modal__present-success'));
 });

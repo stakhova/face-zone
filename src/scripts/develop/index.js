@@ -587,7 +587,6 @@ const post = new Swiper('.post__slider', {
         },
     },
 })
-
 const popular = new Swiper('.popular', {
     slidesPerView: 3.6,
     spaceBetween: 3.2,
@@ -674,9 +673,7 @@ const review = new Swiper(".review", {
         },
     },
 });
-
-
-let program = new Swiper('.program__swiper', {
+const program = new Swiper('.program__swiper', {
     slidesPerView: 1,
     centeredSlides: true,
     loop: true,
@@ -704,7 +701,6 @@ let program = new Swiper('.program__swiper', {
     }
 });
 
-
 // mobile nenu
 const openMenu = () => {
     $('.header__burger').toggleClass("header__burger-open");
@@ -716,16 +712,13 @@ const openMenu = () => {
 };
 
 //recommend text
-
 const dublicateText = () => {
    let block = $('.recommend__block').clone()
     $('.modal__content').append(block)
 };
 
 
-
-
-// different style for mobile
+// style for mobile
 const changeToMobile = () => {
     if (window.innerWidth <= 666) {
         $('.detail__img img').each(function () {
@@ -858,8 +851,6 @@ function sendForm(form, url) {
     ajaxSend(form, url);
 }
 
-
-
 function isNumberKey(evt) {
     let charCode = (evt.which) ? evt.which : event.keyCode;
     console.log('charCode', charCode);
@@ -906,7 +897,6 @@ function toogleModal(btn, modal) {
 
 }
 
-
 function toogleModalWithoutClick(modal) {
     modal.show();
     $('.modal__close').click(function () {
@@ -926,11 +916,12 @@ function toogleModalWithoutClick(modal) {
     });
 }
 
-
 function resetForm() {
     $('.modal__reg').hide();
     $('.modal__forget').hide();
     $('.modal__enter').show();
+    $('.modal__newpassword-create').show()
+    $('.modal__newpassword-success').hide()
 }
 
 function changeContent(btn, content) {
@@ -939,7 +930,6 @@ function changeContent(btn, content) {
         content.show()
     });
 }
-
 
 function showPassword() {
     $('.modal__form-eye').click(function (e) {
@@ -951,6 +941,32 @@ function showPassword() {
 
 }
 
+function profileInfo() {
+    let arrProfile = []
+    $('.info__edit').click(function () {
+        $(this).hide();
+        $('.info__form input').each(function () {
+            arrProfile.push($(this).val())
+            $(this).prop('disabled', false)
+        });
+
+        console.log('arrProfile',arrProfile)
+        $('.info__form-button').css('display','flex')
+    });
+    $('.z').click(function () {
+        $(this).closest('.info__form-button').hide();
+        $(this).closest('.info__form').find('.info__edit').show();
+
+        $('.info__form input').each(function (i) {
+            $(this).prop('disabled', true)
+            $(this).val(arrProfile[i])
+
+        });
+
+        console.log('arrProfile',arrProfile)
+    });
+
+}
 
 const validateForm = (form, func) => {
     form.on("submit", function (e) {
@@ -1027,8 +1043,6 @@ const validateForm = (form, func) => {
 }
 
 
-
-
 $(document).ready(function () {
     changeToMobile();
     accordionMain();
@@ -1039,6 +1053,7 @@ $(document).ready(function () {
     quize();
     showPassword();
     dublicateText();
+    profileInfo();
 });
 
 $(window).load(function (e) {
@@ -1064,19 +1079,46 @@ $(window).load(function (e) {
         sendForm(formEnter,'google.com');
     });
 
-
     // register form
     let formRegister = $('.modal__form-reg')
     validateForm(formRegister, function () {
         sendForm(formRegister,'google.com');
     });
 
-
     //test result form
     let formResult = $('.quiz__result-form')
     validateForm(formResult, function () {
         sendForm(formResult,'google.com');
         window.location.href = "http://localhost:3333/profile-care.html";
+    });
+
+
+    // modal__newpassword-create
+    let formNewPassword = $('.modal__form-newpassword')
+    validateForm(formNewPassword, function () {
+        sendForm(formNewPassword,'google.com');
+        $('.modal__newpassword-create').hide()
+        $('.modal__newpassword-success').show()
+    });
+
+
+    //modal__newpassword-success
+    let formNewPasswordSucc = $('.modal__form-newpassword-success')
+    validateForm(formNewPasswordSucc, function () {
+        sendForm(formNewPasswordSucc,'google.com');
+        $('.modal').hide()
+    });
+
+    //test result form
+    let formInfoProfile = $('.info__form')
+    validateForm(formInfoProfile, function () {
+        sendForm(formInfoProfile,'google.com');
+        console.log($(this))
+        $('.info__form-button').hide();
+        $('.info__edit').show();
+        $('.info__form input').each(function (i) {
+            $(this).prop('disabled', true)
+        });
     });
 
 
@@ -1088,6 +1130,7 @@ $(window).load(function (e) {
     changeContent($('.modal__reg-enter'), $('.modal__enter'))
     changeContent($('.modal__enter-forget'), $('.modal__forget'))
     toogleModal($('.header__auth'), $('.modal__auth'))
+    toogleModal($('.info__change-password'), $('.modal__newpassword'))
     toogleModal($('.recommend__text span'), $('.modal__recommend'))
     changeContent($('.modal__present-want'), $('.modal__present-success'))
 });
