@@ -400,11 +400,11 @@
                                         <label>Email <mark>*</mark> <input name="email" type="email" placeholder="Ваш email" /></label>
                                     </div>
                                     <div class="modal__form-content">
-                                        <label>Номер телефону<input name="tel" type="text" placeholder="Ваш номер" /></label>
+                                        <label>Номер телефону<input type="text" onkeypress='return isNumberKey(event);' name="phone"  placeholder="Ваш номер" /></label>
                                     </div>
                                     <div class="modal__form-content modal__form-check modal__checkbox">
                                         <div class="form__checkbox">
-                                            <input type="checkbox" checked id="check"/>
+                                            <input type="checkbox" checked id="check" name="checkbox"/>
                                             <label for="check">Хочу отримувати розсилку про правильний догляд за шкірою </label>
                                         </div>
                                     </div>

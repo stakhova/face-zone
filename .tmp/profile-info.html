@@ -112,7 +112,7 @@
                             <label>Email<input name="email" type="email" disabled value="olhaprokopchuk@gmail.com"/></label>
                         </div>
                         <div class="modal__form-content">
-                            <label>Номер телефону<input name="tel" type="text" disabled value="+380 97 949 24 07"/></label>
+                            <label>Номер телефону<input type="text" onkeypress='return isNumberKey(event);' name="phone"  disabled value="+380 97 949 24 07"/></label>
                         </div>
                         <div class="info__change" >
                             <div class="modal__form-content modal__form-password">

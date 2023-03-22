@@ -701,6 +701,18 @@ const program = new Swiper('.program__swiper', {
     }
 });
 
+
+const productVideo = new Swiper('.product__video-slider', {
+    slidesPerView: 1,
+    centeredSlides: true,
+    loop: true,
+    spaceBetween: 10,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+
+});
 // mobile nenu
 const openMenu = () => {
     $('.header__burger').toggleClass("header__burger-open");
@@ -759,16 +771,15 @@ const changeToMobile = () => {
 
 //tabs product
 
-// function tabs(){
-//     $(".product__tab .tab").click(function() {
-//         $(".product__tab .tab").removeClass("active").eq($(this).index()).addClass("active");
-//         $(".product__tab-item").hide().eq($(this).index()).fadeIn()
-//     }).eq(0).addClass("active");
-// }
-$(".product__tab .tab").click(function() {
-    $(".product__tab .tab").removeClass("active").eq($(this).index()).addClass("active");
-    $(".product__tab-item").hide().eq($(this).index()).fadeIn()
-}).eq(0).addClass("active");
+function tabsProduct(){
+    if (window.innerWidth > 666) {
+        $(".product__tab .tab").click(function () {
+            $(".product__tab .tab").removeClass("active").eq($(this).index()).addClass("active");
+            $(".product__tab-item").hide().eq($(this).index()).fadeIn()
+        }).eq(0).addClass("active");
+    }
+}
+
 
 
 //accordions
@@ -800,7 +811,6 @@ const filterActive = () => {
     });
 }
 
-
 const showReview = () => {
 
     $('.review__text span').click(function () {
@@ -828,7 +838,6 @@ const showReview = () => {
     })
     toogleModal($('.review__text span'), $('.modal__review'))
 }
-
 
 function ajaxSend(date, url) {
     $.ajax({
@@ -869,7 +878,6 @@ const playVideo = () => {
         $(this).replaceWith(video);
     });
 }
-
 
 function toogleModal(btn, modal) {
     btn.click(function () {
@@ -1043,6 +1051,19 @@ const validateForm = (form, func) => {
 }
 
 
+
+const accordionProduct = () => {
+    $(".product__tab-drop").click(function () {
+        $(this).parent(".product__tab-item").find(".product__tab-inner").slideToggle();
+        $(this).toggleClass('show')
+        $(this).parent(".product__tab-item").nextAll(".product__tab-item").find(".product__tab-drop").removeClass('show')
+        $(this).parent(".product__tab-item").prevAll(".product__tab-item").find(".product__tab-drop").removeClass('show')
+        $(this).parent(".product__tab-item").prevAll(".product__tab-item").find(".product__tab-inner").slideUp(200);
+        $(this).parent(".product__tab-item").nextAll(".product__tab-item").find(".product__tab-inner").slideUp(200).removeClass('show');
+    });
+}
+
+
 $(document).ready(function () {
     changeToMobile();
     accordionMain();
@@ -1054,6 +1075,8 @@ $(document).ready(function () {
     showPassword();
     dublicateText();
     profileInfo();
+    tabsProduct();
+    accordionProduct();
 });
 
 $(window).load(function (e) {
