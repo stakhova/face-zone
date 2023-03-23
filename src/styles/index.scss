@@ -3734,6 +3734,11 @@
     gap:8rem;
 
   }
+  &__block{
+    display: flex;
+    gap:2.4rem;
+
+  }
   &__slider{
     max-height: 42rem;
     overflow: hidden;
@@ -3754,6 +3759,149 @@
       .swiper-button-prev{
         left: 2.4rem;
       }
+    }
+  }
+  &__title{
+    text-align: center;
+    h2{
+      font: 500 2.8rem/121.4% var(--Montserrat);
+      margin-bottom: 2.4rem;
+    }
+    h3{
+      font: 400 1.8rem/177.7% var(--Montserrat);
+      margin-bottom: 2.4rem;
+      mark{
+        font-weight: 600;
+      }
+    }
+  }
+  &__care{
+    background-color: white;
+    &-container{
+      padding: 8rem 8rem 20.7rem ;
+    }
+    &-btn{
+      p{
+        font: 400 1.2rem/125% var(--Montserrat);
+        display: none;
+        margin-top: 0.8rem;
+      }
+    }
+    &-filter{
+      display: flex;
+      justify-content: center;
+      gap:3.2rem;
+      margin-bottom: 6.2rem;
+      & > *{
+         width: calc((100% - 6.4rem)/3);
+      }
+      .active{
+        background-color: var(--color-pudre);
+        color: var(--color-back);
+      }
+    }
+  }
+  &__filter{
+    max-width: 30.2rem ;
+    &-header{
+      display: none;
+      gap:0.8rem;
+      position: relative;
+      align-items: center;
+      &:after{
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        width: 2.4rem;
+        height: 2.4rem;
+        background: url("../img/arrPink.svg") center/2.4rem 2.4rem  no-repeat ;
+      }
+      h3{
+        font: 500 1.6rem/125% var(--Montserrat);
+        color:var(--color-pudre)
+      }
+
+    }
+    &-reset{
+      padding: 0.8rem 2.4rem;
+      width: 100%;
+      margin-bottom: 2.4rem;
+      cursor: pointer;
+    }
+    &-item{
+      padding: 2.4rem 0 1.6rem ;
+      position: relative;
+      &:after{
+        content: '';
+        opacity: 0.08;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        border-bottom: 0.1px solid #333333;
+        border-top: 0.1px solid #333333;
+        pointer-events: none;
+      }
+      h4{
+        font: 400 1.8rem/122.2% var(--Montserrat);
+        margin-bottom:1.6rem;
+      }
+      h3{
+        font: 400 1.8rem/122.2% var(--Montserrat);
+        margin-bottom:1.6rem;
+        position: relative;
+        cursor: pointer;
+        &:after{
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+          width: 1.6rem;
+          height: 1.6rem;
+          background: url("../img/arrFilter.svg") center/1.6rem 1.6rem  no-repeat ;
+        }
+        &.show:after{
+          transform: translateY(-50%) rotate(180deg);
+        }
+      }
+      .modal__form-content{
+        margin: 0;
+        max-width: 14.7rem;
+      }
+
+    }
+    &-inner{
+      .form__checkbox label:before{
+        border: 0.1rem solid var(--color-pudre);
+        font: 400 1.4rem/121.4% var(--Montserrat);
+      }
+      .form__checkbox input:checked + label:after{
+        border: solid white;
+        border-width: 0 0.3rem 0.3rem 0;
+      }
+      .form__checkbox input:checked + label:before{
+        background-color: var(--color-pudre);
+      }
+      input{
+        color:var(--color-black);
+      }
+      display: flex;
+      flex-direction: column;
+      gap:1.6rem;
+    }
+    &-flex{
+      display: flex;
+      gap:0.8rem;
+      flex-direction: row;
+    }
+  }
+  &__form{
+    &-button{
+      display: none;
     }
   }
 }
@@ -5468,6 +5616,95 @@
   .product__desc > *{
     width: 100%;
   }
+  .shop__title h2{
+    font-size: 2.4rem;
+    line-height: 2.9rem;
+    letter-spacing: -0.01em;
+  }
+  .shop__title>h3{
+    display: none;
+  }
+  .shop__care-btn p{
+    display: block;
+    letter-spacing: -0.05em;
+  }
+  .shop__care-filter{
+    flex-direction: column;
+    align-items: center;
+    gap:1.6rem
+  }
+  .shop__care-filter > *{
+    width: 100%;
+    padding: 0.8rem;
+  }
+  .shop__block{
+    flex-direction: column;
+  }
+
+  .shop__filter-header{
+    display: flex;
+    margin-bottom: 3.2rem;
+  }
+  .shop__filter{
+    max-width: 100%;
+  }
+  .shop__filter-item h3:after{
+    width: 2.4rem;
+    height: 2.4rem;
+    background: url(../img/arr-down.svg) center/2.4rem 2.4rem no-repeat;
+  }
+  .shop__filter-header.hide{
+    margin-bottom: 1.6rem;
+    svg{
+      fill:var(--color-pudre);
+    }
+    &:after{
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+  .shop__filter-mob{
+    border:0.1rem solid var(--color-pudre);
+    padding: 1.6rem 1.6rem 0;
+  }
+  .shop__filter-reset{
+    margin-bottom: 2.4rem;
+    padding: 0.8rem;
+    min-width: 100%;
+    position: relative;
+    &:after{
+      content: '';
+      position: absolute;
+      left: -1.6rem;
+      top: -1.6rem;
+      width: calc(100% + 3.2rem);
+      height: 0.1rem;
+      background-color: var(--color-pudre);
+      opacity: 0.4;
+    }
+  }
+  .shop__filter-item h3{
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+  .shop__filter .form__checkbox label{
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+  }
+  .shop__filter .shop__form-button{
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+  }
+  .shop__filter{
+    padding-bottom: 7.8rem;
+  }
+  .shop__filter-mob{
+    position: relative;
+
+  }
 }
 
 .hidden{
@@ -5484,6 +5721,9 @@
 
 
 @media only screen and ( max-width:480px) {
+  .shop__filter .shop__form-button{
+    max-width: 100%;
+  }
   .action__container{
     padding-bottom: 77.3rem;
   }

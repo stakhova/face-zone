@@ -754,6 +754,20 @@ const accordionLips = () => {
     });
 };
 
+const accordionFilter = () => {
+    $(".shop__filter-item h3").click(function () {
+        $(this).parent(".shop__filter-item").find(".shop__filter-inner").slideToggle();
+        $(this).toggleClass('show');
+    });
+};
+
+const accordionFilterHeader = () => {
+    $(".shop__filter-header").click(function () {
+        $(".shop__filter").slideToggle(0);
+        $(this).toggleClass('hide');
+    });
+};
+
 const filterActive = () => {
     $('.blog__filter-category a').click(function () {
         $(this).toggleClass("active");
@@ -988,6 +1002,15 @@ const validateForm = (form, func) => {
     });
 };
 
+const resetFilter = () => {
+    $('.shop__filter-reset').click(function () {
+        $('.shop__form input').each(function () {
+            $(this).prop("checked", false);
+            $(this).val('');
+        });
+    });
+};
+
 const accordionProduct = () => {
     $(".product__tab-drop").click(function () {
         $(this).parent(".product__tab-item").find(".product__tab-inner").slideToggle();
@@ -997,6 +1020,15 @@ const accordionProduct = () => {
         $(this).parent(".product__tab-item").prevAll(".product__tab-item").find(".product__tab-inner").slideUp(200);
         $(this).parent(".product__tab-item").nextAll(".product__tab-item").find(".product__tab-inner").slideUp(200).removeClass('show');
     });
+};
+
+const filterData = () => {
+    if (window.innerWidth > 666) {
+        const filterForm = $(".shop__form");
+        $(".shop__filter input[type=\"checkbox\"]").change(function () {
+            sendForm(filterForm, 'google.com');
+        });
+    }
 };
 
 $(document).ready(function () {
@@ -1012,6 +1044,10 @@ $(document).ready(function () {
     profileInfo();
     tabsProduct();
     accordionProduct();
+    accordionFilter();
+    accordionFilterHeader();
+    filterData();
+    resetFilter();
 });
 
 $(window).load(function (e) {
@@ -1048,6 +1084,12 @@ $(window).load(function (e) {
     validateForm(formResult, function () {
         sendForm(formResult, 'google.com');
         window.location.href = "http://localhost:3333/profile-care.html";
+    });
+
+    // filter form
+    let formFilter = $('.shop__form');
+    validateForm(formFilter, function () {
+        sendForm(formFilter, 'google.com');
     });
 
     // modal__newpassword-create
