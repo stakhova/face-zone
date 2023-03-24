@@ -813,6 +813,8 @@ const filterActive = () => {
         $(this).toggleClass("active");
     });
 }
+
+
 const filterActiveOne=()=>{
     $('.shop__care-btn').click(function(){
         $('.shop__care-btn').removeClass("active");
@@ -990,6 +992,12 @@ function profileInfo() {
     });
 
 }
+
+// $('select').customSelectBox().change(function() {
+//     // Do something with `$(this).val()` !!
+// });
+
+
 
 const validateForm = (form, func) => {
     form.on("submit", function (e) {
@@ -1204,6 +1212,7 @@ $(document).ready(function () {
     accordionLips();
     playVideo();
     filterActive();
+    filterActiveOne();
     showReview();
     quize();
     showPassword();
@@ -1215,7 +1224,7 @@ $(document).ready(function () {
     accordionFilterHeader();
     filterData();
     resetFilter();
-    filterActiveOne();
+
 });
 
 $(window).load(function (e) {
@@ -1262,7 +1271,7 @@ $(window).load(function (e) {
     let formResult = $('.quiz__result-form')
     validateForm(formResult, function () {
         sendForm(formResult,'google.com');
-        window.location.href = "http://localhost:3333/profile-care.html";
+        window.location.href = "https://front-facezone.sheep.fish/profile-care.html";
     });
 
 
