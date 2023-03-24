@@ -112,7 +112,7 @@
                             <label>Email<input name="email" type="email" disabled value="olhaprokopchuk@gmail.com"/></label>
                         </div>
                         <div class="modal__form-content">
-                            <label>Номер телефону<input type="text" onkeypress='return isNumberKey(event);' name="phone"  disabled value="+380 97 949 24 07"/></label>
+                            <label>Номер телефону<input type="text" onkeypress='return isNumberKey(event);' name="phone"  disabled value="+380979492407"/></label>
                         </div>
                         <div class="info__change" >
                             <div class="modal__form-content modal__form-password">
@@ -154,11 +154,11 @@
                             </div>
                             <form action="" class="modal__form modal__form-newpassword">
                                 <div class="modal__form-content modal__form-password">
-                                    <label>Новий Пароль<mark>*</mark> <input name="password" type="password" placeholder="Ваш новий пароль" /></label>
+                                    <label>Новий Пароль<mark>*</mark> <input name="passwordNew" type="password" id="passwordNew" placeholder="Ваш новий пароль" /></label>
                                     <div class="modal__form-eye"></div>
                                 </div>
                                 <div class="modal__form-content modal__form-password">
-                                    <label>Повторіть Пароль<mark>*</mark> <input name="password_confirm" type="password" placeholder="Повторіть пароль" /></label>
+                                    <label>Повторіть Пароль<mark>*</mark> <input name="passwordNew_confirm" type="password" placeholder="Повторіть пароль" /></label>
                                     <div class="modal__form-eye"></div>
                                 </div>
                                 <button type="submit" class="section__button">Зберегти</button>
@@ -167,21 +167,9 @@
                     <div class="modal__content modal__content-small modal__newpassword-success">
                             <div class="modal__close"></div>
                             <div class="modal__auth-title">
-                                <h2>Вітаємо, ви успішно змінили пароль!<br>Тепер ви можете зайти в ваш профіль</h2>
+                                <h2 style="margin: 0">Вітаємо, ви успішно змінили пароль!</h2>
                             </div>
-                            <form action="" class="modal__form modal__form-newpassword-success">
-                                <div class="modal__form-block">
-                                    <div class="modal__form-content ">
-                                        <label>Email <mark>*</mark> <input name="email" type="email" placeholder="Ваш email" /></label>
-                                    </div>
-                                    <div class="modal__form-content modal__form-password">
-                                        <label>Пароль<mark>*</mark> <input name="password" type="password" placeholder="Ваш пароль" /></label>
-                                        <div class="modal__form-eye"></div>
-                                    </div>
-                                </div>
-                                <div class="modal__enter-forget modal__btn-pink">Забули пароль?</div>
-                                <button type="submit" class="section__button">Вхід</button>
-                            </form>
+
                     </div>
                 </div>
             </div>
