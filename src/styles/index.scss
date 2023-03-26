@@ -3332,6 +3332,130 @@
     }
   }
 }
+.archive{
+  &__top{
+    background-color: var(--color-pudre);
+    h1{
+      margin: 0 auto;
+    }
+    .service__top{
+      padding: 3.5rem 2rem 9.6rem;
+    }
+    .profile__menu-active:after{
+      background-color: var(--color-white);
+    }
+  }
+  &__container{
+    padding: 5.4rem 8rem 12rem ;
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+  }
+  &__block{
+    padding: 3.2rem;
+    background-color: var(--color-white);
+  }
+  &__header{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+    h3{
+      font: 400 2.4rem/120.8% var(--Montserrat);
+    }
+    h4{
+      font: 400 1.6rem/125% var(--Montserrat);
+      padding-right: 4.8rem;
+    }
+    &:after{
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%) rotate(180deg);
+      width: 2.4rem;
+      height: 2.4rem;
+      background: url("../img/arrPink.svg") center/2.4rem 2.4rem  no-repeat ;
+    }
+    &.hide:after{
+      transform: translateY(-50%) ;
+    }
+  }
+  &__inner{
+    display: none;
+    position: relative;
+    padding-top: 3.2rem;
+    margin-top: 1.6rem;
+    &:after{
+      content:'';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0.1rem;
+      background-color: var(--color-pudre);
+      opacity: 0.4;
+    }
+  }
+  &__content{
+    display: flex;
+    justify-content: space-between;
+    gap:2.4rem;
+  }
+  &__review{
+    padding: 1.6rem;
+    background-color: var(--color-pudre);
+    color: var(--color-white);
+    max-width:49% ;
+    h4{
+      font: 500 1.8rem/160% var(--Montserrat);
+      margin-bottom: 3.2rem;
+    }
+    h5{
+      font: 700 1.8rem/160% var(--Montserrat);
+      margin-bottom: 1.6rem;
+    }
+    textarea{
+      margin: 1.6rem 0;
+      padding: 1rem 1.6rem;
+      border: none;
+      width: 100%;
+      height: 10rem;
+      font: 500 1.6rem/150% var(--Montserrat);
+      color:var(--color-black);
+      &::placeholder{
+        color: var(--color-grey);
+      }
+
+    }
+    .section__button{
+      background-color: var(--color-white);
+    }
+  }
+  &__rating{
+    font-size: 0;
+    display: flex;
+    gap: 0.7rem;
+    &-val{
+      display: none;
+    }
+    &-star{
+      display: inline-block;
+      width: 3.2rem;
+      height: 3.2rem;
+      background-image: url('../img/Star.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      &.active-star{
+        background-image: url('../img/StarFull.svg');
+      }
+    }
+
+  }
+}
+
+
 
 
 .errorpage{
@@ -5765,7 +5889,70 @@ label.error{
   .modal__auth-title{
    padding: 0 2rem;
   }
+  .archive__top h1{
+    margin: 0 auto;
+  }
+  .archive__top .info__header-container{
+    display: none;
+  }
+  .archive__top .service__top{
+    padding: 10rem 1.6rem 3.2rem;
+  }
+  .archive__container{
+    padding: 0 0 4.8rem;
+    gap: 0.8rem;
+  }
+  .archive__header{
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-start;
+    padding-right: 3.6rem;
 
+  }
+  .archive__header h3{
+    font-size: 2rem;
+    line-height: 2.4rem;
+  }
+  .archive__header h4{
+    font-size: 1.6rem;
+    line-height: 2rem;
+    padding: 0;
+    opacity: 0.8;
+  }
+  .archive__header:after{
+    top: 0;
+    transform: rotate(180deg);
+    width: 3.2rem;
+    height: 3.2rem;
+    background: url(../img/arrPink.svg) center/3.2rem 3.2rem no-repeat;
+  }
+  .archive__content{
+    flex-direction: column;
+    gap: 3.2rem;
+
+  }
+  .archive__review{
+    max-width: 100%;
+  }
+  .archive__inner:after{
+    display: none;
+  }
+  .archive__header.hide:after{
+    transform: none;
+  }
+  .archive__block{
+    padding: 1.6rem;
+  }
+  .archive__inner{
+    padding: 0;
+  }
+  .archive__review h4{
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+  }
+  .archive__review h5{
+    font-size: 1.6rem;
+  }
 }
 .hidden{
   overflow: hidden;

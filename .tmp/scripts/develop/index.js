@@ -749,7 +749,14 @@ const accordionFilter = () => {
     });
 };
 
-const accordionFilterHeader = () => {
+const accordionArchive = () => {
+    $(".archive__header").click(function () {
+        $(this).parent(".archive__block").find(".archive__inner").slideToggle();
+        $(this).toggleClass('hide');
+    });
+};
+
+const accordionFilterWrap = () => {
     $(".shop__filter-header").click(function () {
         $(".shop__filter").slideToggle(0);
         $(this).toggleClass('hide');
@@ -925,11 +932,6 @@ function profileInfo() {
         console.log('arrProfile', arrProfile);
     });
 }
-
-// $('select').customSelectBox().change(function() {
-//     // Do something with `$(this).val()` !!
-// });
-
 
 const validateForm = (form, func) => {
     form.on("submit", function (e) {
@@ -1130,6 +1132,16 @@ const filterData = () => {
         });
     }
 };
+const starReview = () => {
+    $('.archive__rating-star').click(function () {
+        $(this).addClass('active-star');
+        $(this).prevAll('.archive__rating-star').addClass('active-star');
+        $(this).nextAll('.archive__rating-star').removeClass('active-star');
+    });
+    let rating = $('.active-star').length;
+    console.log('rating', rating);
+    $('.archive__rating-val').val(rating);
+};
 
 $(document).ready(function () {
     changeToMobile();
@@ -1146,9 +1158,11 @@ $(document).ready(function () {
     tabsProduct();
     accordionProduct();
     accordionFilter();
-    accordionFilterHeader();
+    accordionFilterWrap();
     filterData();
     resetFilter();
+    accordionArchive();
+    starReview();
 });
 
 $(window).load(function (e) {
@@ -1226,6 +1240,13 @@ $(window).load(function (e) {
         $('.info__form input').each(function (i) {
             $(this).prop('disabled', true);
         });
+    });
+
+    // send review
+    let formReview = $('.archive__review-form');
+    validateForm(formReview, function () {
+
+        sendForm(formReview, 'google.com');
     });
 
     $('.header__burger').on('click', openMenu);

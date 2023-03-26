@@ -27,7 +27,7 @@
 </head>
 <body>
 
-<div class="wrap header__white header__underline-pink header__withoutbtb header__after header__after-mob">
+<div class="wrap header__white header__underline-white ">
     <!-- HEADER -->
     <header class="header">
         <div class="container header__container">
@@ -81,95 +81,83 @@
     <!-- /HEADER -->
 
     <main>
-        <section class="info__header">
+        <section class="archive__top">
             <div class="info__header-container container">
                 <ul class="profile__menu">
                     <li><a href="profile-care.html" >Мій догляд</a></li>
-                    <li><a href="archive.html">Замовлення</a></li>
-                    <li><a href="profile-info.html" class="profile__menu-active">Профіль</a></li>
+                    <li><a class="profile__menu-active" href="archive.html">Замовлення</a></li>
+                    <li><a href="profile-info.html" >Профіль</a></li>
                     <li><a href="profile-test.html">Тест</a></li>
                     <li><a href="">Підібрати догляд на подарунок</a></li>
                 </ul>
                 <h4>Останній раз ви проходили тест 04.03.2022</h4>
             </div>
-        </section>
-        <section class="info">
-            <div class="info__container container ">
-                <form action="" class="info__form" >
-                    <h2 class="info__title">Особисті данні</h2>
-
-                    <div class="info__form-flex">
-                        <div class="modal__form-content">
-                            <label>Ім’я<input name="name" disabled type="text" value="Ольга"/></label>
-                        </div>
-                        <div class="modal__form-content">
-                            <label>Прізвище<input name="lastname" disabled type="text" value="Прокопчук" /></label>
-                        </div>
-                    </div>
-                    <h2 class="info__title">Контакти</h2>
-                    <div class="info__form-flex">
-                        <div class="modal__form-content">
-                            <label>Email<input name="email" type="email" disabled value="olhaprokopchuk@gmail.com"/></label>
-                        </div>
-                        <div class="modal__form-content">
-                            <label>Номер телефону<input type="text" onkeypress='return isNumberKey(event);' name="phone"  disabled value="+380979492407"/></label>
-                        </div>
-                        <div class="info__change" >
-                            <div class="modal__form-content modal__form-password">
-                                <label>Пароль<input name="password" type="password" disabled value="111111"/></label>
-                                <div class="modal__form-eye"></div>
-                            </div>
-                            <div class="section__button section__button-transparent info__change-password">Замінити пароль</div>
-                        </div>
-
-                    </div>
-                    <h2 class="info__title">Адреса доставки</h2>
-                    <div class="info__form-flex">
-                        <div class="modal__form-content">
-                            <label>Місто<input name="town" type="text" disabled  value="м.Київ" /></label>
-                        </div>
-                        <div class="modal__form-content">
-                            <label>Вулиця<input name="street" type="text" disabled value="Ясинуватий провулок, 13/4"/></label>
-                        </div>
-                        <div class="modal__form-content">
-                            <label>Відділення пошти<input name="post" type="text" disabled value="Нова пошта №15"/></label>
-                        </div>
-                    </div>
-                    <div class="section__button info__edit">Редагувати</div>
-                    <div class="info__form-button">
-                        <div class="section__button section__button-transparent info__cancel">Скасувати</div>
-                        <button type="submit" class="section__button">Зберегти</button>
-                    </div>
-                </form>
-
+            <div class="service__top">
+                <h1>Архів ваших замовлень</h1>
             </div>
         </section>
-        <section>
-            <div class="modal modal__newpassword" >
-                <div class="modal__wrap">
-                    <div class="modal__content modal__content-small modal__newpassword-create ">
-                            <div class="modal__close"></div>
-                            <div class="modal__auth-title">
-                                <h2>Створіть, будь ласка, ваш новий пароль</h2>
-                            </div>
-                            <form action="" class="modal__form modal__form-newpassword">
-                                <div class="modal__form-content modal__form-password">
-                                    <label>Новий Пароль<mark>*</mark> <input name="passwordNew" type="password" id="passwordNew" placeholder="Ваш новий пароль" /></label>
-                                    <div class="modal__form-eye"></div>
-                                </div>
-                                <div class="modal__form-content modal__form-password">
-                                    <label>Повторіть Пароль<mark>*</mark> <input name="passwordNew_confirm" type="password" placeholder="Повторіть пароль" /></label>
-                                    <div class="modal__form-eye"></div>
-                                </div>
-                                <button type="submit" class="section__button">Зберегти</button>
-                            </form>
+        <section class="archive">
+            <div class="container archive__container">
+                <div class="archive__block">
+                    <div class="archive__header">
+                        <h3>Замовлення №24233252543</h3>
+                        <h4>03 лютого 2022</h4>
                     </div>
-                    <div class="modal__content modal__content-small modal__newpassword-success">
-                            <div class="modal__close"></div>
-                            <div class="modal__auth-title">
-                                <h2 style="margin: 0">Вітаємо, ви успішно змінили пароль!</h2>
-                            </div>
+                    <div class="archive__inner">
+                        <div class="archive__content">
+                        <div class="archive__info">
+                            archive products
+                        </div>
+                        <div class="archive__review">
+                            <form action="" class="archive__review-form">
+                                <h4>Ми постійно покращуємо нашу систему на основі реальних відгуків.
+                                    Будь ласка, оцініть замовлення - ваш досвід дуже важливий для нас</h4>
+                                <h5>Оцініть замовлення</h5>
 
+                                <div class="archive__rating">
+                                    <i class="archive__rating-star"></i>
+                                    <i class="archive__rating-star"></i>
+                                    <i class="archive__rating-star"></i>
+                                    <i class="archive__rating-star"></i>
+                                    <i class="archive__rating-star"></i>
+                                </div>
+                                <input type="text" class="archive__rating-val"  name="rating" value="">
+                                <textarea name="review" cols="30" rows="10" placeholder="Тут ви можете залишити ваш коментар про засоби та сервіс"></textarea>
+                                <button class="section__button section__button-transparent">Відправити</button>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="archive__block">
+                    <div class="archive__header">
+                        <h3>Замовлення №24233252543</h3>
+                        <h4>03 лютого 2022</h4>
+                    </div>
+                    <div class="archive__inner">
+                        <div class="archive__content">
+                            <div class="archive__info">
+                                archive products
+                            </div>
+                            <div class="archive__review">
+                                <form action="" class="archive__review-form">
+                                    <h4>Ми постійно покращуємо нашу систему на основі реальних відгуків.
+                                        Будь ласка, оцініть замовлення - ваш досвід дуже важливий для нас</h4>
+                                    <h5>Оцініть замовлення</h5>
+
+                                    <div class="archive__rating">
+                                        <i class="archive__rating-star"></i>
+                                        <i class="archive__rating-star"></i>
+                                        <i class="archive__rating-star"></i>
+                                        <i class="archive__rating-star"></i>
+                                        <i class="archive__rating-star"></i>
+                                    </div>
+                                    <input type="text" class="archive__rating-val"  name="rating" value="">
+                                    <textarea name="review" cols="30" rows="10" placeholder="Тут ви можете залишити ваш коментар про засоби та сервіс"></textarea>
+                                    <button class="section__button section__button-transparent">Відправити</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
