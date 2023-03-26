@@ -1317,7 +1317,7 @@ $(window).load(function (e) {
     changeContent($('.modal__enter-forget'), $('.modal__forget'))
     toogleModal($('.header__auth'), $('.modal__auth'))
     toogleModal($('.info__change-password'), $('.modal__newpassword'))
-    toogleModal($('.recommend__text span'), $('.modal__recommend'))
+    toogleModal($('.recommend__desc span'), $('.modal__recommend'))
     changeContent($('.modal__present-want'), $('.modal__present-success'))
 });
 

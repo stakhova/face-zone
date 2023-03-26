@@ -157,10 +157,10 @@
                                     <h4>Діапазон цін</h4>
                                     <div class="shop__filter-inner  shop__filter-flex">
                                         <div class="modal__form-content ">
-                                            <label>Від<input name="price-from" type="number" id="price-from" placeholder="0" /></label>
+                                            <label>Від<input name="price-from" onkeypress='return isNumberKey(event);' type="number" id="price-from" placeholder="0" /></label>
                                         </div>
                                         <div class="modal__form-content">
-                                            <label>До <input name="price-to" type="number" id="price-to" placeholder="80880" value="80880"></label>
+                                            <label>До <input name="price-to" onkeypress='return isNumberKey(event);' type="number" id="price-to" placeholder="80880" value="80880"></label>
                                         </div>
                                     </div>
                                 </div>
@@ -203,6 +203,7 @@
                     <div class="shop__list">
                         <h2>list of product</h2>
                     </div>
+
                 </div>
             </div>
         </section>
