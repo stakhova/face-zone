@@ -47,6 +47,7 @@
 *:after {
     box-sizing: border-box;
     outline: none;
+    -webkit-tap-highlight-color: transparent;
 }
 *,body,html {
     -webkit-text-size-adjust: none;
