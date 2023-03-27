@@ -1207,15 +1207,15 @@ const filterData=()=>{
         });
     }
 }
-const starReview=()=> {
+const starReview = () => {
     $('.archive__rating-star').click(function () {
         $(this).addClass('active-star');
         $(this).prevAll('.archive__rating-star').addClass('active-star');
         $(this).nextAll('.archive__rating-star').removeClass('active-star');
+        let rating = $('.active-star').length;
+        $('.archive__rating-val').val(rating)
     });
-    let rating = $('.active-star').length;
-    console.log('rating',rating)
-    $('.archive__rating-val').val(rating)
+
 }
 
 
@@ -1327,11 +1327,16 @@ $(window).load(function (e) {
 
 
     // send review
-    let formReview = $('.archive__review-form')
+    let formReview = $('.archive__review-form'),
+        modalReview = $(".modal__star")
     validateForm(formReview, function () {
-
         sendForm(formReview,'google.com');
+        toogleModalWithoutClick(modalReview)
     });
+
+
+
+
 
     $('.header__burger').on('click', openMenu);
     quize();

@@ -177,6 +177,15 @@
       background: url("../img/hide.svg") center/2rem 2rem  no-repeat ;
     }
   }
+  &__star{
+    h2{
+      text-align: center;
+    }
+    p{
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
   &__recommend{
     .recommend__block span{
       display: none;
@@ -2447,7 +2456,7 @@
       &:after{
         content: '';
         position: absolute;
-        top: 0.3rem;
+        top: -0.3rem;
         right: 0;
         width: 3.2rem;
         height: 3.2rem;
