@@ -1246,6 +1246,8 @@ $(document).ready(function () {
 
 $(window).load(function (e) {
 
+    $('.shop__select').select2();
+
     //blog form
     let formBlog = $('.getmail__form')
     validateForm(formBlog, function () {

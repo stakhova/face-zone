@@ -435,10 +435,10 @@
       right: 1.6rem;
       width: 2.4rem;
       height: 2.4rem;
-      background: url("../img/eye.svg") center/2.4rem 2.4rem  no-repeat ;
+      background: url("../img/EyeClosed.svg") center/2.4rem 2.4rem  no-repeat ;
       -webkit-tap-highlight-color: transparent;
       &.active{
-        background: url("../img/EyeClosed.svg") center/2.4rem 2.4rem  no-repeat ;
+        background: url("../img/eye.svg") center/2.4rem 2.4rem  no-repeat ;
       }
     }
 
@@ -3956,6 +3956,7 @@
   &__block{
     display: flex;
     gap:2.4rem;
+    align-items: flex-start;
 
   }
   &__slider{
@@ -4128,7 +4129,155 @@
       display: none;
     }
   }
+  &__flash{
+    position: absolute;
+    top:2.6rem;
+    left: 2.6rem;
+    &:after{
+      content: '';
+      padding: 0.4rem 1.6rem;
+      font: 500 1.4rem/228.5% var(--Montserrat);
+    }
+    &.bestseller:after{
+      content: "Bestseller";
+      color:#7D6BC6;
+      background: rgba(125, 107, 198, 0.16)
+    }
+    &.sale:after{
+      content: "Sale";
+      color: #DD6B87;
+      background: rgba(221, 107, 135, 0.16);
+    }
+    &.new:after{
+      content: "New";
+      color: #36CF8F;
+      background: rgba(54, 207, 143, 0.16);
+    }
+  }
+  &__hide{
+    display: none;
+    transition: 0.2s all ease;
+    position: absolute;
+    bottom: -5rem;
+    left: 1.6rem;
+    width: 100%;
+    &-wrap{
+      padding: 0 1.6rem 1.6rem;
+      position: relative;
+      left: -1.6rem;
+      & > *{
+        width: 100%;
+      }
+      &:after{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border: 0.1rem solid var(--color-pudre);
+        border-top: none;
+        pointer-events: none;
+
+      }
+    }
+
+    h5{
+      font: 500 1.4rem/171.4% var(--Montserrat);
+      margin-bottom: 0.8rem;
+    }
+
+  }
+  &__select{
+    margin-bottom: 2.4rem;
+  }
+  &__img{
+    height: 31.1rem;
+    display: block;
+
+  }
+  &__list{
+    display: flex ;
+    flex-wrap: wrap;
+    gap:2.4rem;
+
+  }
+  &__item{
+    width: calc((100% - 4.8rem)/3);
+    padding: 1.6rem;
+    position: relative;
+
+    &:hover {
+      &:after{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border: 0.1rem solid var(--color-pudre);
+        border-bottom: none;
+        pointer-events: none;
+      }
+      .shop__hide{
+        display: block ;
+        transition: 0.2s all ease;
+      }
+    }
+  }
+  &__text{
+    h3{
+      font: 400 2.4rem/120.8% var(--Montserrat);
+      margin: 1.6rem 0 2.4rem;
+    }
+    h4{
+      font: 500 1.8rem/122.2% var(--Montserrat);
+      mark{
+        padding-left: 2.4rem;
+        text-decoration: line-through;
+      }
+    }
+  }
 }
+
+
+
+
+.select2.select2-container{
+  max-width: 27rem;
+  width: 100%!important;
+
+}
+.select2-container--default .select2-selection--single{
+  border-radius: 0;
+  border: 0.1rem solid #CECECE;
+  height: auto;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+  color:var(--color-black);
+  font: 500 1.6rem/150% var(--Montserrat);
+  padding: 1rem 1.6rem;
+  position: relative;
+
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered:after{
+  content: '';
+  position: absolute;
+  right: 1.6rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  top:50%;
+  pointer-events: none;
+  transform:translateY(-50%);
+  background: url("../img/arr-down.svg") center/2.4rem 2.4rem no-repeat;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b, .select2-search--dropdown{
+  display: none;
+}
+
+
+
 
 .hide-after:after,.hide-after:before{
   display: none;
@@ -4139,7 +4288,7 @@
 label.error{
   position: absolute;
   left: 0;
-  bottom: -2.5rem;
+  bottom: -2.1rem;
 }
 
 @media only screen and ( max-width:1400px) {
@@ -4914,7 +5063,7 @@ label.error{
     max-height: 100%;
     margin-bottom: 1.6rem;
   }
-  .post__detail h2 {
+  .post__detail h1 {
     font-size: 2.4rem;
     line-height: 2.9rem;
     margin-bottom: 1.6rem;
