@@ -1112,7 +1112,7 @@ const validateProfile = (form, func) => {
     });
 
     $.validator.addMethod("goodName", function (value, element) {
-        return this.optional(element) || /^[аА-яЯіІєЄїЇґҐa-zA-Z0-9._-]{2,30}$/i.test(value);
+        return this.optional(element) || /^[аА-яЯіІєЄїЇґҐa-zA-Z0-9._-]{2,25}$/i.test(value);
     }, "Введіть правильно ім'я");
 
     $.validator.addMethod("goodEmail", function (value, element) {
@@ -1130,11 +1130,13 @@ const validateProfile = (form, func) => {
                 required: true,
                 goodName: true,
                 // minlength:2,
-                // maxLength: 25
+                // maxLength: 25,
             },
             lastname:{
                 required: true,
                 goodName: true,
+                // minlength:2,
+                // maxLength: 25,
             },
             phone: {
                 required: true,

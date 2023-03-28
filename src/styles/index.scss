@@ -3443,6 +3443,7 @@
     }
     .section__button{
       background-color: var(--color-white);
+      margin-left: auto;
     }
   }
   &__rating{
@@ -5993,7 +5994,7 @@ label.error{
     bottom: -1.6rem;
   }
   .modal__auth-title{
-   padding: 0 2rem;
+   padding: 0 2.5rem;
   }
   .archive__top h1{
     margin: 0 auto;
@@ -6036,6 +6037,12 @@ label.error{
     flex-direction: column;
     gap: 3.2rem;
 
+  }
+  .archive__info .section__button{
+    margin: 2.4rem auto 0;
+  }
+  .archive__review .section__button{
+    margin: 0 auto;
   }
   .archive__review{
     max-width: 100%;
