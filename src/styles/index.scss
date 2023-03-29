@@ -3644,15 +3644,42 @@
       }
     }
     &-care{
-      padding: 30.7rem 28rem 19.4rem;
+      padding: 15rem 8rem 0rem;
+      width: 100%;
+      gap:3.2rem;
+      display: flex;
+      align-items: flex-end;
     }
     &-img{
       width: 100vw;
       height:100%;
       position: absolute;
       z-index: 0;
+
     }
+    &-wrap{
+      background: var(--gradient-banner);
+    }
+    &-info{
+
+    }
+    &-button{
+      display: flex;
+      flex-direction: column;
+      margin: 2.4rem auto 6.2rem;
+      gap: 2.4rem;
+      .shop__care-btn{
+        width: 100%;
+      }
+    }
+
   }
+  &__img{
+    min-width: 50rem;
+    max-width: 50rem;
+    margin-left: -5rem;
+  }
+
 
 }
 
@@ -3957,6 +3984,7 @@
     display: flex;
     gap:2.4rem;
     align-items: flex-start;
+    width: 100%;
 
   }
   &__slider{
@@ -4007,6 +4035,10 @@
         display: none;
         margin-top: 0.8rem;
       }
+      h4{
+        font: 400 1.2rem/125% var(--Montserrat);
+        margin-top: 0.8rem;
+      }
     }
     &-filter{
       display: flex;
@@ -4024,7 +4056,10 @@
     }
   }
   &__filter{
-    max-width: 30.2rem ;
+    &-mob{
+      width: 47.7% ;
+      max-width: 30.2rem;
+    }
     .form__checkbox label{
       font: 400 1.4rem/121.4% var(--Montserrat);
     }
@@ -4058,6 +4093,7 @@
     &-item{
       padding: 2.4rem 0 1.6rem ;
       position: relative;
+      background-color: var(--color-white);
       &:after{
         content: '';
         opacity: 0.08;
@@ -4137,6 +4173,7 @@
       content: '';
       padding: 0.4rem 1.6rem;
       font: 500 1.4rem/228.5% var(--Montserrat);
+      display: block;
     }
     &.bestseller:after{
       content: "Bestseller";
@@ -4158,15 +4195,22 @@
     display: none;
     transition: 0.2s all ease;
     position: absolute;
-    bottom: -5rem;
+    bottom: -6.6rem;
     left: 1.6rem;
     width: 100%;
+    z-index: 2;
+    background-color: var(--color-white);
+    .select2.select2-container{
+      margin-bottom: 2.4rem;
+      width: 100%!important;
+    }
     &-wrap{
       padding: 0 1.6rem 1.6rem;
       position: relative;
       left: -1.6rem;
       & > *{
         width: 100%;
+        min-width: auto;
       }
       &:after{
         content: '';
@@ -4206,24 +4250,41 @@
     width: calc((100% - 4.8rem)/3);
     padding: 1.6rem;
     position: relative;
+    &.item-hover{
+        &:after{
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          border: 0.1rem solid var(--color-pudre);
+          border-bottom: none;
+          pointer-events: none;
+        }
+        .shop__hide{
+          display: block ;
+          transition: 0.2s all ease;
+        }
 
-    &:hover {
-      &:after{
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        border: 0.1rem solid var(--color-pudre);
-        border-bottom: none;
-        pointer-events: none;
-      }
-      .shop__hide{
-        display: block ;
-        transition: 0.2s all ease;
-      }
     }
+  //  &:hover {
+  //    &:after{
+  //      content: '';
+  //      position: absolute;
+  //      left: 0;
+  //      top: 0;
+  //      width: 100%;
+  //      height: 100%;
+  //      border: 0.1rem solid var(--color-pudre);
+  //      border-bottom: none;
+  //      pointer-events: none;
+  //    }
+  //    .shop__hide{
+  //      display: block ;
+  //      transition: 0.2s all ease;
+  //    }
+  //  }
   }
   &__text{
     h3{
@@ -4243,11 +4304,7 @@
 
 
 
-.select2.select2-container{
-  max-width: 27rem;
-  width: 100%!important;
 
-}
 .select2-container--default .select2-selection--single{
   border-radius: 0;
   border: 0.1rem solid #CECECE;
@@ -4261,7 +4318,7 @@
   position: relative;
 
 }
-.select2-container--default .select2-selection--single .select2-selection__rendered:after{
+.select2.select2-container:after{
   content: '';
   position: absolute;
   right: 1.6rem;
@@ -4271,6 +4328,26 @@
   pointer-events: none;
   transform:translateY(-50%);
   background: url("../img/arr-down.svg") center/2.4rem 2.4rem no-repeat;
+}
+.select2-results__option{
+  font: 500 1.6rem/150% var(--Montserrat);
+  padding: 1rem 1.6rem;
+  color: var(--color-black)  ;
+}
+.select2-dropdown{
+  border:0.1rem solid var(--color-grey);
+  border-radius: 0;
+}
+.select2-results__option.nofound{
+  color: var(--color-grey);
+}
+.select2-container--default .select2-results>.select2-results__options{
+  max-height: 8.4rem;
+  overflow-y: scroll;
+}
+
+.select2.select2-container--open:after{
+  transform:translateY(-50%) rotate(180deg);
 }
 .select2-container--default .select2-selection--single .select2-selection__arrow b, .select2-search--dropdown{
   display: none;
@@ -4297,6 +4374,10 @@ label.error{
   }
   .detail__content h5{
     min-height: 12.6rem;
+  }
+  .shop__img {
+    height: 21.6vw;
+
   }
 }
 
@@ -5718,8 +5799,15 @@ label.error{
     margin-bottom: 1.6rem;
   }
   .profile__banner-care {
-    padding: 10rem 1.6rem 6.6rem;
+    padding: 10rem 1.6rem 0rem;
   }
+  .profile__img{
+    display: none;
+  }
+  .profile__banner-button{
+    margin-bottom: 3.2rem;
+  }
+
   .profile__banner-care h2 {
     font-size: 1.6rem;
     line-height: 2.8rem;
@@ -6097,6 +6185,56 @@ label.error{
   .shop__filter-mob {
     border: 0.1rem solid var(--color-pudre);
     padding: 1.6rem 1.6rem 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  .shop__img{
+    height: 46.4vw ;
+  }
+  .shop__flash{
+    top: 1.6rem;
+    left: 1.6rem;
+  }
+  .shop__item:hover{
+    .shop__hide {
+      display: none;
+    }
+    &:after{
+      display: none;
+    }
+  }
+  .shop__item{
+    width:calc(50% - 0.45rem);
+    padding: 0.8rem;
+    &:before{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      border: 0.1rem solid var(--color-back);
+      pointer-events: none;
+    }
+  }
+  .shop__list{
+    gap: 0.9rem;
+    row-gap: 2.4rem;
+  }
+  .shop__text h3{
+    font-size: 1.6rem;
+    line-height: 2rem;
+    letter-spacing: -0.02em;
+    margin: 0.8rem 0;
+  }
+  .shop__text h4{
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    mark{
+      padding-left: 2.4rem;
+      font-size: 1rem;
+      line-height: 1.2rem;
+    }
   }
   .shop__filter-reset {
     margin-bottom: 2.4rem;

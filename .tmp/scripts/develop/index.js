@@ -1144,6 +1144,39 @@ const starReview = () => {
     });
 };
 
+const hoverSelect = () => {
+    $('.shop__item').each(function () {
+
+        let ths = $(this);
+
+        $(this).hover(function () {
+            let select2Container = ths.find('.select2');
+
+            $(this).closest('.shop__item').addClass('item-hover');
+
+            select2Container.on('click', function () {
+                $(this).closest('.shop__item').addClass('item-hover');
+            });
+            ths.on('mouseleave', function (e) {
+                let itemDrop = e.target.closest('.select2-container');
+
+                if (itemDrop === null) {
+                    $('.shop__item').removeClass('item-hover');
+                    $('.shop__select').select2('close');
+                }
+            });
+        });
+    });
+};
+
+const hasSelect = () => {
+    $('.shop__item').each(function () {
+        if ($(this).find('.shop__select ').length > 0) {
+            $(this).find('.shop__hide').css('bottom', '-16.6rem');
+        }
+    });
+};
+
 $(document).ready(function () {
     changeToMobile();
     accordionMain();
@@ -1164,11 +1197,13 @@ $(document).ready(function () {
     resetFilter();
     accordionArchive();
     starReview();
+    hasSelect();
+    hoverSelect();
 });
 
 $(window).load(function (e) {
 
-    $('.shop__select').select2();
+    $('.shop__select').select2({});
 
     //blog form
     let formBlog = $('.getmail__form');
