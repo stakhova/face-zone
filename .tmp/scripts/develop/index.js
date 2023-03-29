@@ -1315,7 +1315,7 @@ const sliderThumbs = new Swiper('.slider__thumbs .swiper-container', { // ище
         0: { // при 0px и выше
             direction: 'horizontal' // горизонтальная прокрутка
         },
-        768: { // при 768px и выше
+        666: { // при 768px и выше
             direction: 'vertical' // вертикальная прокрутка
         }
     }
@@ -1339,7 +1339,7 @@ const sliderImages = new Swiper('.slider__images .swiper-container', { // ище
         0: { // при 0px и выше
             direction: 'horizontal' // горизонтальная прокрутка
         },
-        768: { // при 768px и выше
+        666: { // при 768px и выше
             direction: 'vertical' // вертикальная прокрутка
         }
     }
