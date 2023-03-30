@@ -783,7 +783,6 @@ const filterActiveOne = () => {
 const showReview = () => {
 
     $('.review__text span').click(function () {
-
         let reviewText = $(this).closest('p').text();
         let currentReview = $(this).closest('p').text().substr(0, reviewText.length - 16);
         // let currentReview =  $(this).closest('p').text().substr(0, reviewText.length-13)///якщо без крапок
