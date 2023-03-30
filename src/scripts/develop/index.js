@@ -817,15 +817,19 @@ const accordionFilterWrap= () => {
 
 const filterActive = () => {
     $('.blog__filter-category a').click(function () {
-        $(this).toggleClass("active");
+        $(this).addClass('active');
+        $(this).prevAll('.blog__filter-category a').removeClass('active');
+        $(this).nextAll('.blog__filter-category a').removeClass('active');
     });
 }
 
 
 const filterActiveOne=()=>{
-    $('.shop__care-btn').click(function(){
-        $('.shop__care-btn').removeClass("active");
-        $(this).addClass("active");
+    $('.shop__care-filter .shop__care-btn').click(function(){
+        $(this).addClass('active');
+        $(this).prevAll('.shop__care-btn').removeClass('active');
+        $(this).nextAll('.shop__care-btn').removeClass('active');
+        //
     });
 }
 
@@ -1373,9 +1377,6 @@ $(window).load(function (e) {
         sendForm(formReview,'google.com');
         toogleModalWithoutClick(modalReview)
     });
-
-
-
 
 
     $('.header__burger').on('click', openMenu);
