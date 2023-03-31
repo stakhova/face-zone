@@ -745,13 +745,30 @@ const changeToMobile = () => {
 
 
         $('.recommend__button').click(function () {
-            $(this).toggleClass('recommend__button-hide')
-            $('.recommend__button-hide').text('Розгорнути рекомендації')
+            // $(this).toggleClass('recommend__button-hide')
+            // $(this).toggleClass('recommend__button-show')
+            $('.recommend__button-hide').toggle();
+            $('.recommend__button-show').toggle();
             $('.recommend__container').toggleClass("recommend__container-hide")
         });
 
         $('.recommend__desc').insertAfter('.recommend__block-mob')
 
+
+        //change button text
+        $('.shop__hide .section__button ').text('У кошик')
+
+
+        const relatedSlider = new Swiper('.product__related-slider', {
+            slidesPerView: 2.1,
+            spaceBetween: 9,
+             centeredSlides: false,
+            loop: true,
+            navigation: {
+                nextEl: ".related__next",
+                prevEl: ".related__prev"
+            },
+        });
 
     }
 }
@@ -1230,24 +1247,58 @@ const hoverSelect = () =>{
     $('.shop__item').each(function() {
 
         let ths = $(this)
+        if (window.innerWidth <= 666) {
+            let count = 0;
+            let linkTitle = $(this).find('.shop__text a')
+            let linkImg = $(this).find('.shop__img')
 
-        $(this).hover(function() {
-            let select2Container = ths.find('.select2');
+            linkTitle.click(clickCount)
+            linkImg.click(clickCount)
 
-            $(this).closest('.shop__item').addClass('item-hover')
+            function clickCount(event) {
+                count++;
+                if (count === 1) {
+                    event.preventDefault();
 
-            select2Container.on('click',function (){
-                $(this).closest('.shop__item').addClass('item-hover')
+                } else {
+                    count = 0;
+                }
+
+            }
+            $(this).click(function () {
+                $(this).addClass('shop__item-click')
+                $(this).prevAll('.shop__item').removeClass('shop__item-click');
+                $(this).nextAll('.shop__item').removeClass('shop__item-click');
+
             })
-            ths.on('mouseleave',function(e) {
-                let itemDrop = e.target.closest('.select2-container')
 
-                    if(itemDrop === null ){
+
+
+            // let link = $(this).find('.shop__text a')
+            // link.click(function(event) {
+            //     event.preventDefault();
+            // });
+
+        }
+        if (window.innerWidth > 666) {
+            $(this).hover(function () {
+                let select2Container = ths.find('.select2');
+
+                $(this).closest('.shop__item').addClass('item-hover')
+
+                select2Container.on('click', function () {
+                    $(this).closest('.shop__item').addClass('item-hover')
+                })
+                ths.on('mouseleave', function (e) {
+                    let itemDrop = e.target.closest('.select2-container')
+
+                    if (itemDrop === null) {
                         $('.shop__item').removeClass('item-hover')
                         $('.shop__select').select2('close');
                     }
-            })
-        });
+                })
+            });
+        }
     });
 }
 
@@ -1255,6 +1306,12 @@ const hasSelect=()=>{
     $('.shop__item').each(function () {
         if ($(this).find('.shop__select ').length > 0){
             $(this).find('.shop__hide').css('bottom','-16.6rem')
+        }
+        if (window.innerWidth <= 666) {
+            $(this).find('.shop__hide').css('bottom','-5.8rem')
+            if ($(this).find('.shop__select ').length > 0){
+                $(this).find('.shop__hide').css('bottom','-15.8rem')
+            }
         }
     });
 }

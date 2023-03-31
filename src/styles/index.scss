@@ -2823,6 +2823,7 @@
     padding: 1rem 2.4rem;
     cursor:pointer;
     width: 100%;
+    z-index: 3;
   }
   input[type="radio"] + label:before {
     content: "";
@@ -3682,6 +3683,7 @@
   }
   &__button{
     display: none;
+
   }
   &__title{
     width: 23% ;
@@ -4022,8 +4024,8 @@
     h5{
       font: 500 1.4rem/171.4% var(--Montserrat);
       margin-bottom: 0.8rem;
+      opacity: 0.8;
     }
-
   }
   &__select{
     margin-bottom: 2.4rem;
@@ -4045,21 +4047,21 @@
     position: relative;
     background-color: var(--color-white);
     &.item-hover{
-        &:after{
-          content: '';
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          border: 0.1rem solid var(--color-pudre);
-          border-bottom: none;
-          pointer-events: none;
-        }
-        .shop__hide{
-          display: block ;
-          transition: 0.2s all ease;
-        }
+      &:after{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border: 0.1rem solid var(--color-pudre);
+        border-bottom: none;
+        pointer-events: none;
+      }
+      .shop__hide{
+        display: block ;
+        transition: 0.2s all ease;
+      }
 
     }
   //  &:hover {
@@ -4100,6 +4102,7 @@
     margin-top: 9.6rem;
     margin-left: auto;
     margin-right: 9.1rem;
+    display: block;
     &-count{
      position: relative;
      font: 500 1.2rem/125% var(--Montserrat);
@@ -4364,6 +4367,31 @@
         width: calc((100% - 7.2rem)/4);
       }
     }
+    &-slider{
+      //overflow-x: hidden;
+      position: relative;
+      .swiper-button-next, .swiper-button-prev{
+        display: none;
+        top:-2.2rem;
+        width:1rem;
+        height: 2rem;
+        &:after{
+          font-size: 2rem;
+          color:var(--color-pudre);
+          opacity: 0.4;
+        }
+
+      }
+      .swiper-button-next{
+        right: 2.6rem;
+      }
+      .swiper-button-prev{
+        right: 7.6rem;
+        left: auto;
+      }
+
+
+    }
   }
 }
 
@@ -4465,7 +4493,12 @@
 .select2.select2-container--open:after{
   transform:translateY(-50%) rotate(180deg);
 }
-
+.select2-search.select2-search--dropdown{
+  display: none;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected]{
+  background-color: var(--blog-filter);
+}
 
 
 
@@ -6039,8 +6072,12 @@ label.error{
   .recommend__button.section__button {
     margin: 2.4rem auto -0.8rem;
     max-width: calc(100vw - 3.2rem);
+
+  }
+  .recommend__button-hide{
     display: block;
   }
+
   .recommend__block p {
     width: 100%;
   }
@@ -6092,7 +6129,7 @@ label.error{
   .recommend__instruction {
     margin-top: 1.6rem;
   }
-  .recommend__button.recommend__button-hide {
+  .recommend__button.recommend__button-show {
     margin-bottom: 3.2rem;
   }
   .header__withoutbtb {
@@ -6427,6 +6464,9 @@ label.error{
       display: none;
     }
   }
+  .shop__hide-wrap{
+    padding:  0 0.8rem 0.8rem;
+  }
   .shop__item{
     width:calc(50% - 0.45rem);
     padding: 0.8rem;
@@ -6441,6 +6481,29 @@ label.error{
       pointer-events: none;
     }
   }
+  .shop__list .shop__item-click{
+    &:after{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border: 0.1rem solid var(--color-pudre);
+      border-bottom: none;
+      pointer-events: none;
+    }
+    .shop__hide{
+      display: block ;
+      transition: 0.2s all ease;
+    }
+    &:before {
+      border: 0.1rem solid var(--color-pudre);
+      border-bottom: none;
+
+    }
+  }
+
   .shop__list{
     gap: 0.9rem;
     row-gap: 2.4rem;
@@ -6454,6 +6517,8 @@ label.error{
   .shop__text h4{
     font-size: 1.4rem;
     line-height: 1.7rem;
+    display: flex;
+    align-items: flex-start;
     mark{
       padding-left: 2.4rem;
       font-size: 1rem;
@@ -6625,7 +6690,19 @@ label.error{
   .policy__container{
     padding-bottom: 5.8rem;
   }
+  .select2-container--default .select2-results > .select2-results__options {
+    max-height: 7.8rem;
+  }
+  .product__related-container{
+    padding: 3.2rem 0 11.1rem 1.6rem;
 
+  }
+  .product__related-list{
+    gap:0;
+  }
+  .product__related-slider .swiper-button-next, .product__related-slider .swiper-button-prev{
+    display: block;
+  }
 
 }
 .hidden{
