@@ -1176,23 +1176,39 @@ const hoverSelect = () => {
             linkImg.click(clickCount);
 
             function clickCount(event) {
+                console.log('countbefore', count);
                 count++;
+                console.log('countAFTER', count);
                 if (count === 1) {
                     event.preventDefault();
+                    console.log('count1', count);
                 } else {
                     count = 0;
+                    console.log('count0', count);
                 }
+                // setTimeout(function() {
+                //     count = 0;
+                // }, 1000);
             }
             $(this).click(function () {
                 $(this).addClass('shop__item-click');
                 $(this).prevAll('.shop__item').removeClass('shop__item-click');
                 $(this).nextAll('.shop__item').removeClass('shop__item-click');
             });
-
-            // let link = $(this).find('.shop__text a')
-            // link.click(function(event) {
-            //     event.preventDefault();
-            // });
+            let shopItem = $('.shop__item');
+            shopItem.each(function () {
+                $(document).mousedown(function (event) {
+                    // Якщо клік відбувся за межами елемента, обнулити лічильник
+                    if (!$(event.target).closest('.shop__item').length) {
+                        count = 0;
+                    }
+                    console.log('countEach', count);
+                });
+                // shopItem.mouseup(function() {
+                //     count++;
+                //     console.log('countmouseup',count)
+                // });
+            });
         }
         if (window.innerWidth > 666) {
             $(this).hover(function () {
