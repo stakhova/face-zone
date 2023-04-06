@@ -1503,6 +1503,9 @@
       label{
         font: 500 1.4rem/171% var(--Montserrat);
         width: 100%;
+        position: relative;
+
+
       }
       input {
         font: 400 1.4rem/171% var(--Montserrat);
@@ -1538,8 +1541,9 @@
     #email-error{
       position:absolute ;
       left: 0;
-      bottom: -2.5rem;
+      bottom: -2rem;
       font-size: 1.2rem;
+      width: max-content;
     }
   }
 
@@ -4512,7 +4516,9 @@
 label.error{
   position: absolute;
   left: 0;
-  bottom: -2.1rem;
+  bottom: -2rem;
+  font-size: 1.2rem;
+  color: darkred;
 }
 
 .slider .swiper-container {

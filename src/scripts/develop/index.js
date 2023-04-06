@@ -620,6 +620,10 @@ const swiper = new Swiper('.certificate__swiper', {
     centeredSlides: true,
     loop: true,
     spaceBetween: 30,
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+    },
 
     navigation: {
         nextEl: '.swiper-button-next_cert',
@@ -642,14 +646,18 @@ const review = new Swiper(".review", {
     slidesPerView: 3,
     spaceBetween: 40,
     loop: true,
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+    },
     navigation: {
         nextEl: ".swiper-button-next_review",
         prevEl: ".swiper-button-prev_review",
     },
     breakpoints: {
-        '320': {
+        '0': {
             slidesPerView: 1,
-            spaceBetween: 10,
+            spaceBetween: 20,
         },
         '480': {
             slidesPerView: 2,
@@ -717,6 +725,20 @@ const dublicateText = () => {
     $('.modal__content').append(block)
 };
 
+
+// stop autoplay Slider(){
+
+const autoplay = () =>{
+    $('.swiper-wrapper').on('mouseenter', function() {
+        review.autoplay.stop();
+        swiper.autoplay.stop();
+    });
+
+    $('.swiper-wrapper').on('mouseleave', function() {
+        review.autoplay.start();
+        swiper.autoplay.start();
+    });
+}
 
 // style for mobile
 const changeToMobile = () => {
@@ -1362,6 +1384,7 @@ $(document).ready(function () {
     starReview();
     hasSelect();
     hoverSelect();
+    autoplay();
 });
 
 $(window).load(function (e) {
