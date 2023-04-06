@@ -478,14 +478,14 @@ const compareLips = new Swiper('.compare__lips', {
         prevEl: ".swiper-button-prev"
     },
     breakpoints: {
-        '320': {
+        '0': {
             slidesPerView: 1,
-            spaceBetween: 0
+            spaceBetween: 50
         },
 
         '666': {
             slidesPerView: 3,
-            spaceBetween: 0
+            spaceBetween: 20
         }
     }
 });
@@ -537,6 +537,10 @@ const popular = new Swiper('.popular', {
     spaceBetween: 3.2,
     centeredSlides: true,
     loop: true,
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: false
+    },
     navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev"
@@ -603,10 +607,7 @@ const review = new Swiper(".review", {
     slidesPerView: 3,
     spaceBetween: 40,
     loop: true,
-    autoplay: {
-        delay: 3000,
-        disableOnInteraction: false
-    },
+
     navigation: {
         nextEl: ".swiper-button-next_review",
         prevEl: ".swiper-button-prev_review"
@@ -685,12 +686,12 @@ const dublicateText = () => {
 
 const autoplay = () => {
     $('.swiper-wrapper').on('mouseenter', function () {
-        review.autoplay.stop();
+        popular.autoplay.stop();
         swiper.autoplay.stop();
     });
 
     $('.swiper-wrapper').on('mouseleave', function () {
-        review.autoplay.start();
+        popular.autoplay.start();
         swiper.autoplay.start();
     });
 };
