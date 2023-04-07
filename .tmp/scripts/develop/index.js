@@ -460,7 +460,20 @@ const quize = () => {
                 $(".quiz__result-test input").val(code);
 
                 $("#quiz__block").html("").append($(".quiz__result"));
-            } else showQuestion();
+            } else {
+                if (window.innerWidth <= 666) {
+                    $('.quiz__form h2').each(function () {
+                        $(this).closest('#quiz__block').find('.answer__img').after($(this));
+                    });
+                }
+                showQuestion();
+            }
+        });
+    }
+
+    if (window.innerWidth <= 666) {
+        $('.quiz__form h2').each(function () {
+            $(this).closest('#quiz__block').find('.answer__img').after($(this));
         });
     }
 };
@@ -592,7 +605,7 @@ const swiper = new Swiper('.certificate__swiper', {
     },
     breakpoints: {
         '320': {
-            slidesPerView: 1,
+            slidesPerView: 3,
             spaceBetween: 10
         },
 
@@ -632,6 +645,10 @@ const program = new Swiper('.program__swiper', {
     centeredSlides: true,
     loop: true,
     spaceBetween: 10,
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: false
+    },
     breakpoints: {
         '320': {
             pagination: {
@@ -688,25 +705,32 @@ const autoplay = () => {
     $('.swiper-wrapper').on('mouseenter', function () {
         popular.autoplay.stop();
         swiper.autoplay.stop();
+        program.autoplay.stop();
     });
 
     $('.swiper-wrapper').on('mouseleave', function () {
         popular.autoplay.start();
         swiper.autoplay.start();
+        program.autoplay.start();
     });
 };
 
 // style for mobile
 const changeToMobile = () => {
+
     if (window.innerWidth <= 666) {
+
         $('.detail__img img').each(function () {
             $(this).closest('.detail__item').find('.detail__content').prepend($(this));
         });
+        $('.program__text h2').each(function () {
+            $(this).removeClass('section__gradient-text');
+        });
 
         // $('.program__swiper .swiper-pagination').insertBefore($('.program__swiper .swiper-wrapper '));
-        $('.program__swiper .swiper-wrapper').each(function () {
-            $(this).insertBefore($(this).prev());
-        });
+        // $('.program__swiper .swiper-wrapper').each(function () {
+        //     $(this).insertBefore($(this).prev());
+        // });
         // $('.program__swiper .swiper-pagination').insertBefore($('.program__swiper .swiper-wrapper'))
 
 
@@ -793,13 +817,17 @@ const accordionArchive = () => {
         $(this).parent(".archive__block").find(".archive__inner").slideToggle();
         $(this).toggleClass('hide');
     });
+    $('.archive__block:first-child .archive__header').addClass('hide');
+    $('.archive__block:first-child .archive__inner').show();
 };
 
 const accordionFilterWrap = () => {
-    $(".shop__filter-header").click(function () {
-        $(".shop__filter").slideToggle(0);
-        $(this).toggleClass('hide');
-    });
+    if (window.innerWidth <= 666) {
+        $(".shop__filter-header").click(function () {
+            $(".shop__filter").slideToggle(0);
+            $(this).toggleClass('hide');
+        });
+    }
 };
 
 const filterActive = () => {
@@ -884,11 +912,13 @@ const playVideo = () => {
 function toogleModal(btn, modal) {
     btn.click(function () {
         modal.show();
+        $('body').css('overflow', 'hidden');
         return false;
     });
     $('.modal__close').click(function () {
         $(this).closest(modal).hide();
         resetForm();
+        $('body').css('overflow', 'visible');
         return false;
     });
     $(document).keydown(function (e) {
@@ -896,31 +926,37 @@ function toogleModal(btn, modal) {
             e.stopPropagation();
             modal.hide();
             resetForm();
+            $('body').css('overflow', 'visible');
         }
     });
     modal.click(function (e) {
         if ($(e.target).closest('.modal__content').length == 0) {
             $(this).hide();
             resetForm();
+            $('body').css('overflow', 'visible');
         }
     });
 }
 
 function toogleModalWithoutClick(modal) {
     modal.show();
+    $('body').css('overflow', 'hidden');
     $('.modal__close').click(function () {
         $(this).closest(modal).hide();
+        $('body').css('overflow', 'visible');
         return false;
     });
     $(document).keydown(function (e) {
         if (e.keyCode === 27) {
             e.stopPropagation();
             modal.hide();
+            $('body').css('overflow', 'visible');
         }
     });
     modal.click(function (e) {
         if ($(e.target).closest('.modal__content').length == 0) {
             $(this).hide();
+            $('body').css('overflow', 'visible');
         }
     });
 }
@@ -970,8 +1006,6 @@ function profileInfo() {
             $(this).prop('disabled', true);
             $(this).val(arrProfile[i]);
         });
-
-        console.log('arrProfile', arrProfile);
     });
 }
 
@@ -986,12 +1020,12 @@ const validateForm = (form, func) => {
 
     $.validator.addMethod("goodEmail", function (value, element) {
         return this.optional(element) || /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,62}$/i.test(value);
-    }, "Введіть правильно email");
+    }, "Введіть коректний email");
 
     $.validator.addMethod("goodPhone", function (value, element) {
         // return this.optional(element) || /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/i.test(value);
         return this.optional(element) || /^[+]*[0-9]{10,14}$/g.test(value);
-    }, "Введіть правильно номер телефону");
+    }, "Введіть номер у форматі +380 xxx xx xx");
 
     form.validate({
         rules: {
@@ -1047,11 +1081,11 @@ const validateForm = (form, func) => {
             },
             phone: {
                 required: "Це поле є обов’язкове",
-                phone: "Поле заповнено неправильно"
+                phone: "Введіть номер у форматі +380 xxx xx xx"
             },
             email: {
                 required: "Це поле є обов’язкове",
-                email: "Поле заповнено неправильно"
+                email: "Введіть коректний email"
             },
             password: {
                 required: "Це поле є обов’язкове",
@@ -1089,12 +1123,12 @@ const validateProfile = (form, func) => {
 
     $.validator.addMethod("goodEmail", function (value, element) {
         return this.optional(element) || /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,62}$/i.test(value);
-    }, "Введіть правильно email");
+    }, "Введіть коректний email");
 
     $.validator.addMethod("goodPhone", function (value, element) {
         // return this.optional(element) || /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/i.test(value);
         return this.optional(element) || /^[+]*[0-9]{10,14}$/g.test(value);
-    }, "Введіть правильно номер телефону");
+    }, "Введіть номер у форматі +380 xxx xx xx");
 
     form.validate({
         rules: {
@@ -1134,11 +1168,11 @@ const validateProfile = (form, func) => {
             },
             phone: {
                 required: "Це поле є обов’язкове",
-                phone: "Поле заповнено неправильно"
+                phone: "Введіть номер у форматі +380 xxx xx xx"
             },
             email: {
                 required: "Це поле є обов’язкове",
-                email: "Поле заповнено неправильно"
+                email: "Введіть коректний email"
             }
         },
         submitHandler: function () {
@@ -1169,13 +1203,14 @@ const accordionProduct = () => {
 };
 
 const filterData = () => {
-    if (window.innerWidth > 666) {
-        const filterForm = $(".shop__form");
-        $(".shop__filter input[type=\"checkbox\"]").change(function () {
-            sendForm(filterForm, 'google.com');
-        });
-    }
+
+    // const filterForm = $(".shop__form")
+    $(".shop__filter input").change(function () {
+        // sendForm(filterForm, 'google.com');
+        $('.shop__filter-btn').show();
+    });
 };
+
 const starReview = () => {
     $('.archive__rating-star').click(function () {
         $(this).addClass('active-star');
