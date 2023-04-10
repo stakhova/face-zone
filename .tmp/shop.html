@@ -61,9 +61,9 @@
                             <li class="header__item "><a href="../for-doctors.html">Для лікарів</a></li>
                             <li class="header__item "><a href="../blog.html">Блог</a></li>
                             <li class="header__item"><a href="../shop.html">Магазин</a></li>
-                            <li class="header__item"><a class="header__auth" >Мій кабінет</a></li>
                             <li class="header__item "><a href="../contact.html">Контакти</a></li>
                         </ul>
+    
                         <div class="header__social footer__social">
                             <a href="#" class="img"><img src="../img/telegram.svg" alt="" /></a>
                             <a href="#" class="img"><img src="../img/whatsapp.svg" alt="" /></a>
@@ -73,7 +73,12 @@
                             <a href="#" class="img"><img src="../img/facebook.svg" alt="" /></a>
                         </div>
                     </div>
-                    <a class="section__button section__button-transparent header__button start__test" href="../quiz.html"> Пройти тест </a>
+                    <div>
+                        <a class="header__auth header__user img" >
+                            <img src="../img/userHeader.svg" alt="">
+                        </a>
+                    </div>
+                    <a class="section__button section__button-transparent header__button start__test" href="../quiz.html">Тест шкіри</a>
                 </div>
             </div>
         </div>
@@ -131,74 +136,80 @@
                             <h3>Фільтр</h3>
                         </div>
                         <div class="shop__filter">
-                            <div class="shop__filter-reset section__button">Скасувати всі фільтри</div>
-                            <form action="" class="shop__form">
-                                <div class="shop__filter-item">
-                                    <h3>Тип продукту</h3>
-                                    <div class="shop__filter-inner">
-                                        <div class="form__checkbox">
-                                            <input type="checkbox"  id="check1" name="checkbox1"/>
-                                            <label for="check1">Зволоження</label>
-                                        </div>
-                                        <div class="form__checkbox">
-                                            <input type="checkbox" id="check2" name="checkbox2"/>
-                                            <label for="check2">Сироватки</label>
-                                        </div>
-                                        <div class="form__checkbox">
-                                            <input type="checkbox" id="check3" name="checkbox3"/>
-                                            <label for="check3">Умивання</label>
-                                        </div>
-                                        <div class="form__checkbox">
-                                            <input type="checkbox"  id="check4" name="checkbox4"/>
-                                            <label for="check4">Маски</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="shop__filter-item">
-                                    <h4>Діапазон цін</h4>
-                                    <div class="shop__filter-inner  shop__filter-flex">
-                                        <div class="modal__form-content ">
-                                            <label>Від<input name="price-from" onkeypress='return isNumberKey(event);' type="number" id="price-from" placeholder="0" /></label>
-                                        </div>
-                                        <div class="modal__form-content">
-                                            <label>До <input name="price-to" onkeypress='return isNumberKey(event);' type="number" id="price-to" placeholder="80880" value="80880"></label>
+                            <div class="shop__filter-content">
+                                <div class="shop__filter-close"></div>
+                                <form action="" class="shop__form">
+                                    <div class="shop__filter-item">
+                                        <h3>Тип продукту</h3>
+                                        <div class="shop__filter-inner">
+                                            <div class="form__checkbox">
+                                                <input type="checkbox"  id="check1" name="checkbox1"/>
+                                                <label for="check1">Зволоження</label>
+                                            </div>
+                                            <div class="form__checkbox">
+                                                <input type="checkbox" id="check2" name="checkbox2"/>
+                                                <label for="check2">Сироватки</label>
+                                            </div>
+                                            <div class="form__checkbox">
+                                                <input type="checkbox" id="check3" name="checkbox3"/>
+                                                <label for="check3">Умивання</label>
+                                            </div>
+                                            <div class="form__checkbox">
+                                                <input type="checkbox"  id="check4" name="checkbox4"/>
+                                                <label for="check4">Маски</label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="shop__filter-item">
-                                    <h3>Сезон</h3>
-                                    <div class="shop__filter-inner">
-                                        <div class="form__checkbox">
-                                            <input type="checkbox"  id="check11" name="checkbox5"/>
-                                            <label for="check11">Oсінь/Зима</label>
-                                        </div>
-                                        <div class="form__checkbox">
-                                            <input type="checkbox" id="check22" name="checkbox6"/>
-                                            <label for="check22">Весна/Літо</label>
+                                    <div class="shop__filter-item">
+                                        <h4>Діапазон цін</h4>
+                                        <div class="shop__filter-inner  shop__filter-flex">
+                                            <div class="modal__form-content ">
+                                                <label>Від<input name="price-from" onkeypress='return isNumberKey(event);' type="number" id="price-from" placeholder="0" /></label>
+                                            </div>
+                                            <div class="modal__form-content">
+                                                <label>До <input name="price-to" onkeypress='return isNumberKey(event);' type="number" id="price-to" placeholder="80880" value="80880"></label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="shop__filter-item">
-                                    <h3>Час доби</h3>
-                                    <div class="shop__filter-inner">
-                                        <div class="form__checkbox">
-                                            <input type="checkbox"  id="check111" name="checkbox7"/>
-                                            <label for="check111">Вранці</label>
-                                        </div>
-                                        <div class="form__checkbox">
-                                            <input type="checkbox" id="check222" name="checkbox8"/>
-                                            <label for="check222">Ввечері</label>
-                                        </div>
-                                        <div class="form__checkbox">
-                                            <input type="checkbox" id="check333" name="checkbox9"/>
-                                            <label for="check333">Вранці та/або ввечері</label>
+                                    <div class="shop__filter-item">
+                                        <h3>Сезон</h3>
+                                        <div class="shop__filter-inner">
+                                            <div class="form__checkbox">
+                                                <input type="checkbox"  id="check11" name="checkbox5"/>
+                                                <label for="check11">Oсінь/Зима</label>
+                                            </div>
+                                            <div class="form__checkbox">
+                                                <input type="checkbox" id="check22" name="checkbox6"/>
+                                                <label for="check22">Весна/Літо</label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <button class="shop__form-button section__button">
-                                    Застосувати фільтр
-                                </button>
-                            </form>
+                                    <div class="shop__filter-item">
+                                        <h3>Час доби</h3>
+                                        <div class="shop__filter-inner">
+                                            <div class="form__checkbox">
+                                                <input type="checkbox"  id="check111" name="checkbox7"/>
+                                                <label for="check111">Вранці</label>
+                                            </div>
+                                            <div class="form__checkbox">
+                                                <input type="checkbox" id="check222" name="checkbox8"/>
+                                                <label for="check222">Ввечері</label>
+                                            </div>
+                                            <div class="form__checkbox">
+                                                <input type="checkbox" id="check333" name="checkbox9"/>
+                                                <label for="check333">Вранці та/або ввечері</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shop__filter-btn" >
+                                        <div class="shop__filter-reset section__button section__button-transparent">Скасувати всі фільтри</div>
+                                        <button type="submit" class="shop__form-submit section__button ">
+                                            Застосувати фільтр
+                                        </button>
+                                    </div>
+
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <div class="shop__list">
@@ -318,13 +329,11 @@
 
 
                     </div>
-
-
                     </div>
-                <a href="#" class="shop__bag img">
-                    <img src="img/ShoppingBag.svg" alt="">
-                    <div class="shop__bag-count">23</div>
-                </a>
+                    <a href="#" class="shop__bag img">
+                        <img src="img/ShoppingBag.svg" alt="">
+                        <div class="shop__bag-count">23</div>
+                    </a>
             </div>
         </section>
     </main>
@@ -337,27 +346,41 @@
                         <a href="../index.html" class="footer__logo img">
                             <img src="../img/logo-white.svg" alt="" />
                         </a>
-                        <a href="../quiz.html" class="section__button footer__button">Пройти тест</a>
+    <!--                    <a href="../quiz.html" class="section__button footer__button">Пройти тест</a>-->
                     </div>
                     <div class="footer__item">
                         <ul class="footer__menu">
-                            <li><a href="../index.html">Підбір косметики</a></li>
-                            <li><a href="../for-doctors.html">Навчання лікарів</a></li>
-                            <li><a href="../service-face.html">Процедури </a></li>
-                            <li><a href="../blog.html">Новини </a></li>
+                            <li><a href="../shop.html">Купити професійну косметику</a></li>
+                            <li>
+                                <div class="footer__submenu">
+                                    <div class="footer__drop"> Процедури </div>
+                                    <div class="footer__inner">
+                                        <a href="../service-eye.html">Кола та набряки під очима</a>
+                                        <a href="../service-lips.html">Губи для поцілунків</a>
+                                        <a href="../service-face.html">Зморшки, пропорції, контур обличчя</a>
+                                    </div>
+                                </div>
+    
+                            </li>
+    
+                            <li><a href="../index.html">Підібрати догляд</a></li>
                             <li><a href="../school.html">Школа догляду</a></li>
+                            <li><a href="../for-doctors.html">Навчання лікарів</a></li>
+                            <li><a href="../blog.html">Блог про догляд за шкірою </a></li>
+                            <li><a href="../index.html">Тестування шкіри</a></li>
                             <li><a href="../contact.html">Контакти</a></li>
+    
                         </ul>
                     </div>
                     <div class="footer__item">
                         <h2>Соціальні медіа</h2>
                         <div class="footer__social">
-                            <a href="#" class="img"><img src="../img/telegram.svg" alt="" /></a>
-                            <a href="#" class="img"><img src="../img/whatsapp.svg" alt="" /></a>
-                            <a href="#" class="img"><img src="../img/viber.svg" alt="" /></a>
-                            <a href="#" class="img"><img src="../img/insta.svg" alt="" /></a>
-                            <a href="#" class="img"><img src="../img/youtube.svg" alt="" /></a>
-                            <a href="#" class="img"><img src="../img/facebook.svg" alt="" /></a>
+                            <div><a href="#" class="img"><img src="../img/telegram.svg" alt="" /></a></div>
+                            <div><a href="#" class="img"><img src="../img/whatsapp.svg" alt="" /></a></div>
+                            <div><a href="#" class="img"><img src="../img/viber.svg" alt="" /></a></div>
+                            <div><a href="#" class="img"><img src="../img/insta.svg" alt="" /></a></div>
+                            <div><a href="#" class="img"><img src="../img/youtube.svg" alt="" /></a></div>
+                            <div><a href="#" class="img"><img src="../img/facebook.svg" alt="" /></a></div>
                         </div>
                     </div>
                 </div>

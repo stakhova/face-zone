@@ -891,10 +891,19 @@ const accordionFilterWrap = () => {
         $(".shop__filter-header").click(function () {
             $(".shop__filter").slideToggle(0);
             $(this).toggleClass('hide');
+            $('body').addClass('hidden')
         });
     }
 }
 
+const closeFilter = () => {
+    if(window.innerWidth <= 666){
+        $(".shop__filter-close").click(function () {
+            $(this).closest('.shop__filter').hide()
+            $('body').removeClass('hidden')
+        })
+    }
+}
 
 
 const filterActive = () => {
@@ -1293,11 +1302,10 @@ const accordionProduct = () => {
 }
 
 const filterData=()=>{
-
-        // const filterForm = $(".shop__form")
         $(".shop__filter input").change(function () {
-            // sendForm(filterForm, 'google.com');
-            $('.shop__filter-btn').show();
+            $('.shop__filter-btn').css('display', 'flex');
+            $(this).closest('.shop__filter').css('padding-bottom','13.8rem');
+            $('body').removeClass('hidden')
         });
 }
 
@@ -1316,6 +1324,13 @@ const starReview = () => {
 }
 
 
+const dropFooter = () =>{
+    $('.footer__drop').click(function () {
+        $(this).toggleClass('footer__drop-open')
+        $(this).closest('body').find('.action__container').toggleClass('action__container-big')
+        $('.footer__inner').toggleClass("footer__inner-open")
+    });
+}
 
 
 const hoverSelect = () =>{
@@ -1327,57 +1342,29 @@ const hoverSelect = () =>{
             let linkTitle = $(this).find('.shop__text a')
             let linkImg = $(this).find('.shop__img')
 
+            ths.mouseleave(function(event) {
+                    count = 0;
+            });
+
             linkTitle.click(clickCount)
             linkImg.click(clickCount)
 
 
-
-
-
-
-
-
             function clickCount(event) {
-                console.log('countbefore',count)
                 count++;
-                console.log('countAFTER',count)
                 if (count === 1) {
                     event.preventDefault();
-                    console.log('count1',count)
-
-                } else {
+               }
+                else {
                     count = 0;
-                    console.log('count0',count)
 
                 }
-                // setTimeout(function() {
-                //     count = 0;
-                // }, 1000);
-
             }
             $(this).click(function () {
                 $(this).addClass('shop__item-click')
                 $(this).prevAll('.shop__item').removeClass('shop__item-click');
                 $(this).nextAll('.shop__item').removeClass('shop__item-click');
-
             })
-            let shopItem = $('.shop__item');
-            shopItem.each(function () {
-                $(document).mousedown(function(event) {
-                    // Якщо клік відбувся за межами елемента, обнулити лічильник
-                    if (!$(event.target).closest('.shop__item').length) {
-                        count = 0;
-                    }
-                    console.log('countEach',count)
-                });
-                // shopItem.mouseup(function() {
-                //     count++;
-                //     console.log('countmouseup',count)
-                // });
-            });
-
-
-
         }
         if (window.innerWidth > 666) {
             $(this).hover(function () {
@@ -1438,6 +1425,8 @@ $(document).ready(function () {
     hasSelect();
     hoverSelect();
     autoplay();
+    dropFooter();
+    closeFilter();
 });
 
 $(window).load(function (e) {
@@ -1494,6 +1483,8 @@ $(window).load(function (e) {
     let formFilter = $('.shop__form')
     validateForm(formFilter, function () {
         sendForm(formFilter,'google.com');
+        $('.shop__filter').hide()
+        $('body').removeClass('hidden')
     });
 
 

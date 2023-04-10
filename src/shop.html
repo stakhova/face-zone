@@ -53,74 +53,80 @@
                             <h3>Фільтр</h3>
                         </div>
                         <div class="shop__filter">
-                            <div class="shop__filter-reset section__button">Скасувати всі фільтри</div>
-                            <form action="" class="shop__form">
-                                <div class="shop__filter-item">
-                                    <h3>Тип продукту</h3>
-                                    <div class="shop__filter-inner">
-                                        <div class="form__checkbox">
-                                            <input type="checkbox"  id="check1" name="checkbox1"/>
-                                            <label for="check1">Зволоження</label>
-                                        </div>
-                                        <div class="form__checkbox">
-                                            <input type="checkbox" id="check2" name="checkbox2"/>
-                                            <label for="check2">Сироватки</label>
-                                        </div>
-                                        <div class="form__checkbox">
-                                            <input type="checkbox" id="check3" name="checkbox3"/>
-                                            <label for="check3">Умивання</label>
-                                        </div>
-                                        <div class="form__checkbox">
-                                            <input type="checkbox"  id="check4" name="checkbox4"/>
-                                            <label for="check4">Маски</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="shop__filter-item">
-                                    <h4>Діапазон цін</h4>
-                                    <div class="shop__filter-inner  shop__filter-flex">
-                                        <div class="modal__form-content ">
-                                            <label>Від<input name="price-from" onkeypress='return isNumberKey(event);' type="number" id="price-from" placeholder="0" /></label>
-                                        </div>
-                                        <div class="modal__form-content">
-                                            <label>До <input name="price-to" onkeypress='return isNumberKey(event);' type="number" id="price-to" placeholder="80880" value="80880"></label>
+                            <div class="shop__filter-content">
+                                <div class="shop__filter-close"></div>
+                                <form action="" class="shop__form">
+                                    <div class="shop__filter-item">
+                                        <h3>Тип продукту</h3>
+                                        <div class="shop__filter-inner">
+                                            <div class="form__checkbox">
+                                                <input type="checkbox"  id="check1" name="checkbox1"/>
+                                                <label for="check1">Зволоження</label>
+                                            </div>
+                                            <div class="form__checkbox">
+                                                <input type="checkbox" id="check2" name="checkbox2"/>
+                                                <label for="check2">Сироватки</label>
+                                            </div>
+                                            <div class="form__checkbox">
+                                                <input type="checkbox" id="check3" name="checkbox3"/>
+                                                <label for="check3">Умивання</label>
+                                            </div>
+                                            <div class="form__checkbox">
+                                                <input type="checkbox"  id="check4" name="checkbox4"/>
+                                                <label for="check4">Маски</label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="shop__filter-item">
-                                    <h3>Сезон</h3>
-                                    <div class="shop__filter-inner">
-                                        <div class="form__checkbox">
-                                            <input type="checkbox"  id="check11" name="checkbox5"/>
-                                            <label for="check11">Oсінь/Зима</label>
-                                        </div>
-                                        <div class="form__checkbox">
-                                            <input type="checkbox" id="check22" name="checkbox6"/>
-                                            <label for="check22">Весна/Літо</label>
+                                    <div class="shop__filter-item">
+                                        <h4>Діапазон цін</h4>
+                                        <div class="shop__filter-inner  shop__filter-flex">
+                                            <div class="modal__form-content ">
+                                                <label>Від<input name="price-from" onkeypress='return isNumberKey(event);' type="number" id="price-from" placeholder="0" /></label>
+                                            </div>
+                                            <div class="modal__form-content">
+                                                <label>До <input name="price-to" onkeypress='return isNumberKey(event);' type="number" id="price-to" placeholder="80880" value="80880"></label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="shop__filter-item">
-                                    <h3>Час доби</h3>
-                                    <div class="shop__filter-inner">
-                                        <div class="form__checkbox">
-                                            <input type="checkbox"  id="check111" name="checkbox7"/>
-                                            <label for="check111">Вранці</label>
-                                        </div>
-                                        <div class="form__checkbox">
-                                            <input type="checkbox" id="check222" name="checkbox8"/>
-                                            <label for="check222">Ввечері</label>
-                                        </div>
-                                        <div class="form__checkbox">
-                                            <input type="checkbox" id="check333" name="checkbox9"/>
-                                            <label for="check333">Вранці та/або ввечері</label>
+                                    <div class="shop__filter-item">
+                                        <h3>Сезон</h3>
+                                        <div class="shop__filter-inner">
+                                            <div class="form__checkbox">
+                                                <input type="checkbox"  id="check11" name="checkbox5"/>
+                                                <label for="check11">Oсінь/Зима</label>
+                                            </div>
+                                            <div class="form__checkbox">
+                                                <input type="checkbox" id="check22" name="checkbox6"/>
+                                                <label for="check22">Весна/Літо</label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <button class="shop__form-button section__button">
-                                    Застосувати фільтр
-                                </button>
-                            </form>
+                                    <div class="shop__filter-item">
+                                        <h3>Час доби</h3>
+                                        <div class="shop__filter-inner">
+                                            <div class="form__checkbox">
+                                                <input type="checkbox"  id="check111" name="checkbox7"/>
+                                                <label for="check111">Вранці</label>
+                                            </div>
+                                            <div class="form__checkbox">
+                                                <input type="checkbox" id="check222" name="checkbox8"/>
+                                                <label for="check222">Ввечері</label>
+                                            </div>
+                                            <div class="form__checkbox">
+                                                <input type="checkbox" id="check333" name="checkbox9"/>
+                                                <label for="check333">Вранці та/або ввечері</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shop__filter-btn" >
+                                        <div class="shop__filter-reset section__button section__button-transparent">Скасувати всі фільтри</div>
+                                        <button type="submit" class="shop__form-submit section__button ">
+                                            Застосувати фільтр
+                                        </button>
+                                    </div>
+
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <div class="shop__list">
@@ -240,13 +246,11 @@
 
 
                     </div>
-
-
                     </div>
-                <a href="#" class="shop__bag img">
-                    <img src="img/ShoppingBag.svg" alt="">
-                    <div class="shop__bag-count">23</div>
-                </a>
+                    <a href="#" class="shop__bag img">
+                        <img src="img/ShoppingBag.svg" alt="">
+                        <div class="shop__bag-count">23</div>
+                    </a>
             </div>
         </section>
     </main>
