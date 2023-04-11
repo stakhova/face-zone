@@ -570,6 +570,24 @@
       }
     }
   }
+  &__quiz{
+    //display: block;
+    .modal__content{
+      max-width: max-content;
+    }
+    &-wrap{
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+      align-items: center;
+    }
+    &-btn{
+      display: flex;
+      gap: 1.6rem;
+      justify-content: center;
+    }
+  }
 }
 
 
@@ -709,6 +727,7 @@
   &__reg{
     display: none;
   }
+
 }
 
 
@@ -867,6 +886,9 @@
   &__item{
     position: relative;
     &:nth-child(4){
+      display: none;
+    }
+    &:nth-child(8){
       display: none;
     }
   }
@@ -1308,10 +1330,15 @@
     & > h6{
       font: 400 3.6rem/100% var(--Adventure);
       margin-bottom: 2rem;
+
     }
     & > h5{
       font: 400 2.6rem/100% var(--Adventure);
       margin-bottom: 4rem;
+      mark{
+        font: 400 2.6rem/100% var(--Montserrat);
+        letter-spacing: -0.1rem;
+      }
     }
 
     &-flex{
@@ -5112,10 +5139,10 @@ label.error{
   }
 
   .action__container {
-    padding: 6.2rem 1.6rem 75rem;
+    padding: 6.2rem 1.6rem 85rem;
   }
   .action__container-big{
-    padding-bottom: 90rem;
+    padding-bottom: 100rem;
   }
   .footer__inner{
     left: 50%;
@@ -5124,6 +5151,7 @@ label.error{
   .action__number {
     font-size: 15rem;
     margin-bottom: -3.5rem;
+    padding-top: 1rem;
   }
   .action p {
     margin: 0 auto 2.4rem;
@@ -5168,7 +5196,7 @@ label.error{
     }
   }
   .footer__container {
-    padding: 6.5rem 1.6rem 0.8rem;
+    padding: 4.5rem 1.6rem 0.8rem;
   }
   .footer__menu > *{
     width: 100%;
@@ -5181,6 +5209,9 @@ label.error{
     gap: 3.3rem;
     max-width: 100%;
     flex-wrap: nowrap;
+  }
+  .footer__menu > *:hover{
+    color: inherit;
   }
   .footer__social > * {
     width: 2.6rem;
@@ -5238,7 +5269,7 @@ label.error{
     font-size: 2.4rem;
   }
   .portfolio__info > h6 {
-    margin-bottom: 2.4rem;
+    margin-bottom: 1rem;
     font-size: 2rem;
     line-height: 3.2rem;
   }
@@ -5255,7 +5286,10 @@ label.error{
     width: calc((100% - 4.8rem) / 3);
   }
   .portfolio__info-label h6 {
-    font-size: 4.8rem;
+    font-size: 3.8rem;
+  }
+  .portfolio__info-flex{
+    gap:1.6rem;
   }
   .portfolio__info-label p {
     font-size: 1.2rem;
@@ -5273,7 +5307,7 @@ label.error{
     height: 5.8rem;
   }
   .portfolio__info-flex {
-    gap: 2.4rem;
+    gap: 1.6rem;
     margin-top: 0;
   }
   .portfolio__list > h5 {
@@ -5394,12 +5428,12 @@ label.error{
     gap: 0.6rem;
     align-items: center;
   }
-  .header__item:nth-child(4), .header__item:nth-child(9) {
+  .header__item:nth-child(4), .header__item:nth-child(8) {
     display: block;
   }
   .header__menu-show .header__drop > a {
-    color: var(--color-pudre);
-    font-weight: 500;
+    color: var(--color-black);
+    //font-weight: 500;
   }
   .header__underline-pink .header__menu > li > a:hover:after {
     display: none;
@@ -5729,9 +5763,9 @@ label.error{
     padding: 2.5rem 1rem;
     min-width: 22.4rem;
   }
-  .value__title:before {
-    display: none;
-  }
+  //.value__title:before {
+  //  display: none;
+  //}
   .doctors__container {
     padding: 0 1.6rem 0rem;
   }
@@ -7008,16 +7042,20 @@ label.error{
     padding: 1.6rem;
   }
   .portfolio__info > h5{
-    font-size: 2rem;
+    font-size: 1.9rem;
     line-height: 3.2rem;
     margin-bottom: 2.4rem;
   }
   .header__withoutbtb .header__menu-show {
       top:5rem;
   }
+  .portfolio__info > h5 mark{
+    font-size: 1.9rem;
+  }
 }
 .hidden{
   overflow: hidden;
+  height: 100vh;
 }
 
 
@@ -7074,7 +7112,9 @@ label.error{
 @media only screen and ( max-width:374px) {
   .action__number{
     font-size: 13rem;
-
+  }
+  .portfolio__info-flex {
+    gap: 1rem;
   }
   .archive__desc-info{
     width: 50%;

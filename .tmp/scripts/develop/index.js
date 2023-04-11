@@ -931,6 +931,12 @@ function toogleModal(btn, modal) {
         $('body').css('overflow', 'visible');
         return false;
     });
+    $('.modal__quiz-return').click(function () {
+        $(this).closest(modal).hide();
+        $('body').css('overflow', 'visible');
+        return false;
+    });
+
     $(document).keydown(function (e) {
         if (e.keyCode === 27) {
             e.stopPropagation();
@@ -1304,10 +1310,24 @@ const hasSelect = () => {
     });
 };
 
+const changeUrl = () => {
+    let url = window.location.href.includes('quiz');
+    if (url) {
+        console.log('000');
+        $(window).on('popstate', function (e) {
+            e.preventDefault();
+            console.log('111');
+            toogleModalWithoutClick($('.modal__quiz'));
+        });
+    }
+    console.log('url', url);
+};
+
 $(document).ready(function () {
     changeToMobile();
     accordionMain();
     accordionLips();
+    changeUrl();
     playVideo();
     filterActive();
     filterActiveOne();
@@ -1428,6 +1448,7 @@ $(window).load(function (e) {
     toogleModal($('.header__auth'), $('.modal__auth'));
     toogleModal($('.info__change-password'), $('.modal__newpassword'));
     toogleModal($('.recommend__desc span'), $('.modal__recommend'));
+    toogleModal($('.quiz__close'), $('.modal__quiz'));
     changeContent($('.modal__present-want'), $('.modal__present-success'));
 });
 
