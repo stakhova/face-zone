@@ -260,8 +260,8 @@ const quize = () => {
 
 
     function showQuestion() {
-        let str = `<h2> ${questionsList[queue[currentQuestion]].question} </h2><div class = "answer__wrap" >`;
-        questionsList[queue[currentQuestion]].img ? str += `<div class="answer__flex"><div class="answer__img img"><img src=${questionsList[queue[currentQuestion]].img}> </div><div class="answer__block" >` : str += `<div class="answer__flex"> <div  class="answer__block" >`
+        let str = `<div class = "answer__wrap" >`;
+        questionsList[queue[currentQuestion]].img ? str += `<div class="answer__flex"><div class="answer__img img"><img src=${questionsList[queue[currentQuestion]].img}></div><h2> ${questionsList[queue[currentQuestion]].question} </h2><div class="answer__block" >` : str += `<div class="answer__flex"> <h2> ${questionsList[queue[currentQuestion]].question} </h2><div  class="answer__block" >`
 
 
         $(questionsList[queue[currentQuestion]].answer).each(function (i, e) {
@@ -501,11 +501,12 @@ const quize = () => {
                 $("#quiz__block").html("").append($(".quiz__result"));
 
             } else{
-                if (window.innerWidth <= 666) {
-                    $('.quiz__form h2').each(function () {
-                        $(this).closest('#quiz__block').find('.answer__img').after($(this));
-                    });
-                }
+                // if (window.innerWidth <= 666) {
+                //     $('.quiz__form h2').each(function () {
+                //         console.log('this',$(this))
+                //         $(this).closest('#quiz__block').find('.answer__img').after($(this));
+                //     });
+                // }
                 showQuestion();
             }
 
@@ -514,11 +515,11 @@ const quize = () => {
 
     }
 
-    if (window.innerWidth <= 666) {
-        $('.quiz__form h2').each(function () {
-            $(this).closest('#quiz__block').find('.answer__img').after($(this));
-        });
-    }
+    // if (window.innerWidth <= 666) {
+    //     $('.quiz__form h2').each(function () {
+    //         $(this).closest('#quiz__block').find('.answer__img').after($(this));
+    //     });
+    // }
 };
 
 
@@ -797,6 +798,7 @@ const changeToMobile = () => {
 
         $('.header__drop').click(function () {
             $(this).toggleClass('header__drop-open')
+            console.log('ddddd')
             $('.header__submenu').toggleClass("header__submenu-open")
         });
         $('.detail__img').addClass('detail__img-click ')
@@ -1408,24 +1410,24 @@ const hasSelect=()=>{
     });
 }
 
-const changeUrl = () =>{
-    let url = window.location.href.includes('quiz')
-    if(url){
-        console.log('000')
-        $(window).on('popstate', function(e) {
-            e.preventDefault()
-            console.log('111')
-            toogleModalWithoutClick($('.modal__quiz'))
-        });
-    }
-    console.log('url',url)
-}
+
+
+// $(window).bind("beforeunload", function() {
+//     let url = window.location.href.includes('quiz');
+//     // if(url) {
+//     console.log(123, url);
+//         return confirm("Do you really want to close?");
+//         // return toogleModalWithoutClick($('.modal__quiz'))
+//     // }
+//     // toogleModalWithoutClick($('.modal__quiz'))
+//
+//
+// })
 
 $(document).ready(function () {
     changeToMobile();
     accordionMain();
     accordionLips();
-    changeUrl();
     playVideo();
     filterActive();
     filterActiveOne();

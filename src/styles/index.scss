@@ -642,7 +642,8 @@
     }
     position: absolute;
     left: 0;
-    bottom: -14rem;
+    top: 3rem;
+    z-index: 2;
 
   }
   &__top{
@@ -885,10 +886,7 @@
   }
   &__item{
     position: relative;
-    &:nth-child(4){
-      display: none;
-    }
-    &:nth-child(8){
+    &:nth-child(7){
       display: none;
     }
   }
@@ -1530,7 +1528,7 @@
     gap:1.6rem;
     flex-wrap: wrap;
     &-container{
-      padding: 9.4rem 8rem 6.4rem;
+      padding: 9.4rem 8rem 16rem;
     }
     &-flex{
       display: flex;
@@ -2929,11 +2927,17 @@
     width: 5rem;
     height: 5rem;
     display: block;
+    cursor: pointer;
   }
   #quiz__block{
+    position: relative;
+    margin-top: 16rem;
     h2{
+      position: absolute;
+      top: -10rem;
+      left: 50%;
+      transform: translateX(-50%);
       text-align: center;
-      margin-bottom: 4.8rem;
       font: 500 2.5rem/121.4% var(--Montserrat);
     }
   }
@@ -4694,6 +4698,7 @@ label.error{
   bottom: -2rem;
   font-size: 1.2rem;
   color: darkred;
+  font-weight: 500;
 }
 
 .slider .swiper-container {
@@ -5142,11 +5147,16 @@ label.error{
     padding: 6.2rem 1.6rem 85rem;
   }
   .action__container-big{
-    padding-bottom: 100rem;
+    padding-bottom: 102.6rem;
   }
   .footer__inner{
     left: 50%;
-
+    top: 0;
+    position: relative;
+    background-color: transparent;
+  }
+  .footer__inner a{
+    padding: 2.4rem 0 0;
   }
   .action__number {
     font-size: 15rem;
@@ -5269,7 +5279,7 @@ label.error{
     font-size: 2.4rem;
   }
   .portfolio__info > h6 {
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
     font-size: 2rem;
     line-height: 3.2rem;
   }
@@ -5428,7 +5438,7 @@ label.error{
     gap: 0.6rem;
     align-items: center;
   }
-  .header__item:nth-child(4), .header__item:nth-child(8) {
+  .header__item:nth-child(7) {
     display: block;
   }
   .header__menu-show .header__drop > a {
@@ -6172,6 +6182,14 @@ label.error{
     margin-bottom: 0;
     text-align: left;
     margin-right: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+
+  .quiz #quiz__block{
+    margin-top: 5rem;
   }
   .quiz__logo {
     width: 12rem;
@@ -6790,6 +6808,7 @@ label.error{
     gap: 0.9rem;
     row-gap: 2.4rem;
   }
+
   .shop__text h3{
     font-size: 1.6rem;
     line-height: 2rem;
@@ -7044,13 +7063,16 @@ label.error{
   .portfolio__info > h5{
     font-size: 1.9rem;
     line-height: 3.2rem;
-    margin-bottom: 2.4rem;
+    margin-bottom: 1.6rem;
   }
   .header__withoutbtb .header__menu-show {
       top:5rem;
   }
   .portfolio__info > h5 mark{
     font-size: 1.9rem;
+  }
+  .blog__list-container{
+    padding-bottom: 8.8rem;
   }
 }
 .hidden{
@@ -7081,7 +7103,7 @@ label.error{
     bottom: 0;
   }
   .footer__inner a{
-    padding: 1.5rem;
+    padding: 2.4rem 0 0 2.4rem;
   }
   .footer__menu > *{
     width: 100%;
@@ -7112,6 +7134,16 @@ label.error{
 @media only screen and ( max-width:374px) {
   .action__number{
     font-size: 13rem;
+  }
+  .action__container-big{
+    padding-bottom: 101.6rem;
+  }
+  .footer__inner a {
+    padding: 2.4rem 0 0 0rem;
+    font-size: 1.4rem;
+  }
+  .footer__menu{
+    font-size: 1.4rem;
   }
   .portfolio__info-flex {
     gap: 1rem;
