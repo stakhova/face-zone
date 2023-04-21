@@ -272,8 +272,8 @@ const quize = () => {
         });
 
         $(".quiz__next").bind("click", function () {
-            console.log($(".answer:checked").val());
-            console.log($('.answer:checked').attr('data-question-type'));
+            // console.log($(".answer:checked").val());
+            // console.log($('.answer:checked').attr('data-question-type'));
 
             let checkType = $('.answer:checked').attr('data-question-type');
             let answerResult = $(".answer:checked").val();
@@ -293,13 +293,13 @@ const quize = () => {
                 default:
                     break;
             }
-            console.log('A', A);
-            console.log('B', B);
-            console.log('C', C);
-            console.log('D', D);
+            // console.log('A', A);
+            // console.log('B', B);
+            // console.log('C', C);
+            // console.log('D', D);
 
             let result = 'A' + A + 'B' + B + 'C' + C + 'D' + D;
-            console.log(result);
+            // console.log(result);
             let finalA = 0,
                 finalB = 0,
                 finalC = 0,
@@ -358,7 +358,7 @@ const quize = () => {
                     break;
             }
             result = finalA + finalB + finalC + finalD;
-            console.log('final result', result);
+            // console.log('final result', result);
 
             //get code from 1 to 81
             let decoding = {
@@ -446,7 +446,7 @@ const quize = () => {
 
             };
             let code = Object.keys(decoding).find(key => decoding[key] === result);
-            console.log('code', code);
+            // console.log('code', code);
 
             let text = "<h2>  Вітаємо - Ви пройшли тест! <br> Аналізуємо ваші результати</h2>";
             if (currentQuestion >= questionsList.length) {
@@ -461,22 +461,10 @@ const quize = () => {
 
                 $("#quiz__block").html("").append($(".quiz__result"));
             } else {
-                // if (window.innerWidth <= 666) {
-                //     $('.quiz__form h2').each(function () {
-                //         console.log('this',$(this))
-                //         $(this).closest('#quiz__block').find('.answer__img').after($(this));
-                //     });
-                // }
                 showQuestion();
             }
         });
     }
-
-    // if (window.innerWidth <= 666) {
-    //     $('.quiz__form h2').each(function () {
-    //         $(this).closest('#quiz__block').find('.answer__img').after($(this));
-    //     });
-    // }
 };
 
 // swipers
@@ -519,6 +507,11 @@ const shop = new Swiper('.shop__slider', {
     spaceBetween: 1,
     centeredSlides: true,
     loop: true,
+    speed: 600,
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: false
+    },
     navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev"
@@ -594,7 +587,8 @@ const swiper = new Swiper('.certificate__swiper', {
     slidesPerView: 5,
     centeredSlides: true,
     loop: true,
-    spaceBetween: 30,
+    spaceBetween: 60,
+    speed: 600,
     autoplay: {
         delay: 3000,
         disableOnInteraction: false
@@ -607,12 +601,12 @@ const swiper = new Swiper('.certificate__swiper', {
     breakpoints: {
         '320': {
             slidesPerView: 3,
-            spaceBetween: 10
+            spaceBetween: 20
         },
 
         '667': {
             slidesPerView: 5,
-            spaceBetween: 30
+            spaceBetween: 40
         }
     }
 });
@@ -684,6 +678,7 @@ const productVideo = new Swiper('.product__video-slider', {
     }
 
 });
+
 // mobile nenu
 const openMenu = () => {
     $('.header__burger').toggleClass("header__burger-open");
@@ -697,26 +692,28 @@ const openMenu = () => {
 //recommend text
 const dublicateText = () => {
     let block = $('.recommend__block').clone();
-    $('.modal__content').append(block);
+    $('.modal__content ').append(block);
+    $('.recommend__full ').insertAfter($('.modal__content .recommend__block-mob'));
 };
 
 // stop autoplay Slider(){
-
 const autoplay = () => {
     $('.swiper-wrapper').on('mouseenter', function () {
         popular.autoplay.stop();
         swiper.autoplay.stop();
         program.autoplay.stop();
+        shop.autoplay.stop();
     });
 
     $('.swiper-wrapper').on('mouseleave', function () {
         popular.autoplay.start();
         swiper.autoplay.start();
         program.autoplay.start();
+        shop.autoplay.start();
     });
 };
 
-// style for mobile
+// change style for mobile
 const changeToMobile = () => {
 
     if (window.innerWidth <= 666) {
@@ -742,7 +739,6 @@ const changeToMobile = () => {
 
         $('.header__drop').click(function () {
             $(this).toggleClass('header__drop-open');
-            console.log('ddddd');
             $('.header__submenu').toggleClass("header__submenu-open");
         });
         $('.detail__img').addClass('detail__img-click ');
@@ -765,6 +761,7 @@ const changeToMobile = () => {
             spaceBetween: 9,
             centeredSlides: false,
             loop: true,
+            allowTouchMove: false,
             navigation: {
                 nextEl: ".related__next",
                 prevEl: ".related__prev"
@@ -774,7 +771,6 @@ const changeToMobile = () => {
 };
 
 //tabs product
-
 function tabsProduct() {
     if (window.innerWidth > 666) {
         $(".product__tab .tab").click(function () {
@@ -784,7 +780,16 @@ function tabsProduct() {
     }
 }
 
-//accordions
+// tabs profile care
+
+function tabsShop() {
+    $(".shop__tab .tab").click(function () {
+        $(".shop__tab .tab").removeClass("active").eq($(this).index()).addClass("active");
+        $(".shop__tab-item").hide().eq($(this).index()).fadeIn().css('display', 'flex');
+    }).eq(1).addClass("active");
+}
+
+//accordions main page
 function accordionMain() {
     $(".detail__img-click").click(function () {
         $(this).parent(".detail__item").find(".detail__content").toggle();
@@ -796,6 +801,7 @@ function accordionMain() {
     });
 }
 
+// accordion for lips page
 const accordionLips = () => {
     $(".question__header").click(function () {
         $(this).parent(".question__item").find(".question__content").slideToggle();
@@ -814,6 +820,7 @@ const accordionFilter = () => {
     });
 };
 
+// accordion for filter
 const accordionArchive = () => {
     $(".archive__header").click(function () {
         $(this).parent(".archive__block").find(".archive__inner").slideToggle();
@@ -823,6 +830,7 @@ const accordionArchive = () => {
     $('.archive__block:first-child .archive__inner').show();
 };
 
+// accordion for filter
 const accordionFilterWrap = () => {
     if (window.innerWidth <= 666) {
         $(".shop__filter-header").click(function () {
@@ -833,6 +841,7 @@ const accordionFilterWrap = () => {
     }
 };
 
+//close filter
 const closeFilter = () => {
     if (window.innerWidth <= 666) {
         $(".shop__filter-close").click(function () {
@@ -842,6 +851,7 @@ const closeFilter = () => {
     }
 };
 
+// one filter for blog
 const filterActive = () => {
     $('.blog__filter-category a').click(function () {
         $(this).addClass('active');
@@ -850,17 +860,17 @@ const filterActive = () => {
     });
 };
 
+// one filter active for profile care
 const filterActiveOne = () => {
     $('.shop__care-filter .shop__care-btn').click(function () {
         $(this).addClass('active');
         $(this).prevAll('.shop__care-btn').removeClass('active');
         $(this).nextAll('.shop__care-btn').removeClass('active');
-        //
     });
 };
 
+// show review in modal window
 const showReview = () => {
-
     $('.review__text span').click(function () {
         let reviewText = $(this).closest('p').text();
         let currentReview = $(this).closest('p').text().substr(0, reviewText.length - 16);
@@ -868,8 +878,6 @@ const showReview = () => {
 
         $('.review__modal-swiper .review__text p').each(function (index) {
             if ($(this).text().includes(currentReview)) {
-                console.log('currentReview', currentReview);
-                console.log('index', index);
                 const reviewModal = new Swiper(".review__modal-swiper", {
                     initialSlide: index,
                     slidesPerView: 1,
@@ -885,33 +893,35 @@ const showReview = () => {
     toogleModal($('.review__text span'), $('.modal__review'));
 };
 
-function ajaxSend(date, url) {
+// create ajax
+function ajaxSend(date, url, func) {
     $.ajax({
         url: url,
         dataType: "json",
         data: date,
         method: 'POST',
         success: function (data) {
-            location.reload();
+            func();
         },
         error: function (error) {},
         complete: function () {}
     });
 }
 
-function sendForm(form, url) {
+// send form
+function sendForm(form, url, func) {
     form = form.serialize();
-    ajaxSend(form, url);
+    ajaxSend(form, url, func);
 }
 
+// enter only number
 function isNumberKey(evt) {
     let charCode = evt.which ? evt.which : event.keyCode;
-    console.log('charCode', charCode);
     if (charCode != 43 && charCode > 31 && (charCode < 48 || charCode > 57)) return false;
-
     return true;
 }
 
+// play video
 const playVideo = () => {
     $('.video__poster').click(function () {
         let video = '<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameBorder="0" src="' + $(this).attr('data-video') + '" title="' + $(this).attr('data-title') + '"></iframe>';
@@ -921,6 +931,7 @@ const playVideo = () => {
     });
 };
 
+// open modal with click
 function toogleModal(btn, modal) {
     btn.click(function () {
         modal.show();
@@ -956,6 +967,7 @@ function toogleModal(btn, modal) {
     });
 }
 
+// open modal without click
 function toogleModalWithoutClick(modal) {
     modal.show();
     $('body').css('overflow', 'hidden');
@@ -979,6 +991,7 @@ function toogleModalWithoutClick(modal) {
     });
 }
 
+// to default after close modal
 function resetForm() {
     $('.modal__reg').hide();
     $('.modal__forget').hide();
@@ -987,8 +1000,11 @@ function resetForm() {
     $('.modal__newpassword-success').hide();
     $('.modal__forget-wrap').show();
     $('.modal__forget-mail').hide();
+    $('.modal__reg-success').hide();
+    $('.modal__reg').hide();
 }
 
+// change content in modal window
 function changeContent(btn, content) {
     btn.click(function () {
         $(this).closest('.modal__content').hide();
@@ -996,6 +1012,7 @@ function changeContent(btn, content) {
     });
 }
 
+// show&hide password
 function showPassword() {
     $('.modal__form-eye').click(function (e) {
         $(this).toggleClass('active');
@@ -1003,6 +1020,7 @@ function showPassword() {
     });
 }
 
+// change profile info
 function profileInfo() {
     let arrProfile = [];
     $('.info__edit').click(function () {
@@ -1013,7 +1031,6 @@ function profileInfo() {
         });
         $('.info__form input[type^="password"]').prop('disabled', true);
 
-        console.log('arrProfile', arrProfile);
         $('.info__form-button').css('display', 'flex');
     });
     $('.info__cancel').click(function () {
@@ -1027,6 +1044,7 @@ function profileInfo() {
     });
 }
 
+//validate all form
 const validateForm = (form, func) => {
     form.on("submit", function (e) {
         e.preventDefault();
@@ -1130,6 +1148,7 @@ const validateForm = (form, func) => {
     });
 };
 
+// validate profile info
 const validateProfile = (form, func) => {
     form.on("submit", function (e) {
         e.preventDefault();
@@ -1200,6 +1219,7 @@ const validateProfile = (form, func) => {
     });
 };
 
+// reset all filter
 const resetFilter = () => {
     $('.shop__filter-reset').click(function () {
         $('.shop__form input').each(function () {
@@ -1209,6 +1229,7 @@ const resetFilter = () => {
     });
 };
 
+// accordion for product info
 const accordionProduct = () => {
     $(".product__tab-drop").click(function () {
         $(this).parent(".product__tab-item").find(".product__tab-inner").slideToggle();
@@ -1220,6 +1241,7 @@ const accordionProduct = () => {
     });
 };
 
+// show filter
 const filterData = () => {
     $(".shop__filter input").change(function () {
         $('.shop__filter-btn').css('display', 'flex');
@@ -1228,6 +1250,7 @@ const filterData = () => {
     });
 };
 
+// star review
 const starReview = () => {
     $('.archive__rating-star').click(function () {
         $(this).addClass('active-star');
@@ -1238,6 +1261,7 @@ const starReview = () => {
     });
 };
 
+// drop menu for footer
 const dropFooter = () => {
     $('.footer__drop').click(function () {
         $(this).toggleClass('footer__drop-open');
@@ -1246,6 +1270,7 @@ const dropFooter = () => {
     });
 };
 
+// product cart show detail
 const hoverSelect = () => {
     $('.shop__item').each(function () {
 
@@ -1298,6 +1323,7 @@ const hoverSelect = () => {
     });
 };
 
+// check select in product card
 const hasSelect = () => {
     $('.shop__item').each(function () {
         if ($(this).find('.shop__select ').length > 0) {
@@ -1312,17 +1338,13 @@ const hasSelect = () => {
     });
 };
 
-// $(window).bind("beforeunload", function() {
-//     let url = window.location.href.includes('quiz');
-//     // if(url) {
-//     console.log(123, url);
-//         return confirm("Do you really want to close?");
-//         // return toogleModalWithoutClick($('.modal__quiz'))
-//     // }
-//     // toogleModalWithoutClick($('.modal__quiz'))
-//
-//
-// })
+const auth = () => {
+    $('.header__user').attr('href', 'http://localhost:8080/shop/');
+    $('.header__user').removeClass('header__auth').unbind();
+    $('.modal__enter').hide();
+    $('.modal__enter-wrap').hide();
+    $('.modal__reg-success').show();
+};
 
 $(document).ready(function () {
     changeToMobile();
@@ -1349,9 +1371,10 @@ $(document).ready(function () {
     autoplay();
     dropFooter();
     closeFilter();
+    tabsShop();
 });
 
-$(window).load(function (e) {
+$(window).load(function () {
 
     $('.shop__select').select2({});
 
@@ -1373,7 +1396,7 @@ $(window).load(function (e) {
     // enter form
     let formEnter = $('.modal__form-enter');
     validateForm(formEnter, function () {
-        sendForm(formEnter, 'google.com');
+        sendForm(formEnter, '/wp-admin/admin-ajax.php');
     });
 
     // forgot password form
@@ -1387,7 +1410,7 @@ $(window).load(function (e) {
     // register form
     let formRegister = $('.modal__form-reg');
     validateForm(formRegister, function () {
-        sendForm(formRegister, 'google.com');
+        sendForm(formRegister, '/wp-admin/admin-ajax.php', auth());
     });
 
     //test result form
@@ -1424,7 +1447,6 @@ $(window).load(function (e) {
     let formInfoProfile = $('.info__form');
     validateProfile(formInfoProfile, function () {
         sendForm(formInfoProfile, 'google.com');
-        console.log($(this));
         $('.info__form-button').hide();
         $('.info__edit').show();
         $('.info__form input').each(function (i) {
@@ -1453,48 +1475,4 @@ $(window).load(function (e) {
 });
 
 $(window).resize(function () {});
-
-const sliderThumbs = new Swiper('.slider__thumbs .swiper-container', { // ищем слайдер превью по селектору
-    // задаем параметры
-    direction: 'vertical', // вертикальная прокрутка
-    slidesPerView: 4, // показывать по 3 превью
-    spaceBetween: 16, // расстояние между слайдами
-    navigation: { // задаем кнопки навигации
-        nextEl: '.slider__next', // кнопка Next
-        prevEl: '.slider__prev' // кнопка Prev
-    },
-    freeMode: true, // при перетаскивании превью ведет себя как при скролле
-    breakpoints: { // условия для разных размеров окна браузера
-        0: { // при 0px и выше
-            direction: 'horizontal' // горизонтальная прокрутка
-        },
-        666: { // при 768px и выше
-            direction: 'vertical' // вертикальная прокрутка
-        }
-    }
-});
-// Инициализация слайдера изображений
-const sliderImages = new Swiper('.slider__images .swiper-container', { // ищем слайдер превью по селектору
-    // задаем параметры
-    direction: 'vertical', // вертикальная прокрутка
-    slidesPerView: 1, // показывать по 1 изображению
-    spaceBetween: 32, // расстояние между слайдами
-    mousewheel: true, // можно прокручивать изображения колёсиком мыши
-    navigation: { // задаем кнопки навигации
-        nextEl: '.slider__next', // кнопка Next
-        prevEl: '.slider__prev' // кнопка Prev
-    },
-    grabCursor: true, // менять иконку курсора
-    thumbs: { // указываем на превью слайдер
-        swiper: sliderThumbs // указываем имя превью слайдера
-    },
-    breakpoints: { // условия для разных размеров окна браузера
-        0: { // при 0px и выше
-            direction: 'horizontal' // горизонтальная прокрутка
-        },
-        666: { // при 768px и выше
-            direction: 'vertical' // вертикальная прокрутка
-        }
-    }
-});
 //# sourceMappingURL=index.js.map
